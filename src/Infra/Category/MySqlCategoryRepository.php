@@ -32,7 +32,6 @@ class MySqlCategoryRepository implements CategoryRepository
         }
 
         return $category;
-
     }
 
     private function categoryFromItem(array $item): Category
