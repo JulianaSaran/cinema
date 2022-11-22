@@ -1,9 +1,9 @@
 <?php
 
-namespace Juliana\Cinema\Application\Http\Api;
+namespace Juliana\Cinema\Application\Http\Api\Movie;
 
 use Juliana\Cinema\Application\Http\Response;
-use Juliana\Cinema\Domain\ListMovieService;
+use Juliana\Cinema\Domain\Movie\ListMovieService;
 
 class ListMovieController
 {

@@ -1,8 +1,6 @@
 <?php
 
-namespace Juliana\Cinema\Domain;
-
-use Juliana\Agenda\Application\Http\Response;
+namespace Juliana\Cinema\Domain\Movie;
 
 class DeleteMovieService
 {

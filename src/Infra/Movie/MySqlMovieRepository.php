@@ -1,11 +1,11 @@
 <?php
 
-namespace Juliana\Cinema\Infra;
+namespace Juliana\Cinema\Infra\Movie;
 
 use DateTime;
 use DateTimeInterface;
-use Juliana\Cinema\Domain\Movie;
-use Juliana\Cinema\Domain\MovieRepository;
+use Juliana\Cinema\Domain\Movie\Movie;
+use Juliana\Cinema\Domain\Movie\MovieRepository;
 use PDO;
 
 class MySqlMovieRepository implements MovieRepository
@@ -32,12 +32,12 @@ class MySqlMovieRepository implements MovieRepository
         return $movies;
     }
 
-    public function loadById(int $id):Movie
+    public function loadById(int $id): Movie
     {
         $query = "SELECT * FROM movies WHERE id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([":id" => $id]);
-        $item=$stmt->fetch();
+        $item = $stmt->fetch();
 
         return $this->movieFromItem($item);
     }
@@ -71,7 +71,7 @@ class MySqlMovieRepository implements MovieRepository
     {
         $query = "DELETE FROM movies WHERE id = :id";
         $stmt = $this->pdo->prepare($query);
-        $stmt->execute([":id"=> $movie->id]);
+        $stmt->execute([":id" => $movie->id]);
     }
 
     private function movieFromItem(array $item): Movie
@@ -80,7 +80,7 @@ class MySqlMovieRepository implements MovieRepository
             id: $item["id"],
             name: $item["name"],
             launchedAt: new DateTime($item["launched_at"]),
-            createdAt:new DateTime($item["created_at"]),
+            createdAt: new DateTime($item["created_at"]),
         );
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Juliana\Cinema\Domain;
+namespace Juliana\Cinema\Domain\Movie;
 
 use DateTime;
 use DateTimeInterface;

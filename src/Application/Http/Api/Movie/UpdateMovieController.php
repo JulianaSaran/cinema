@@ -1,9 +1,9 @@
 <?php
 
-namespace Juliana\Cinema\Application\Http\Api;
+namespace Juliana\Cinema\Application\Http\Api\Movie;
 
 use Juliana\Cinema\Application\Http\Response;
-use Juliana\Cinema\Domain\UpdateMovieService;
+use Juliana\Cinema\Domain\Movie\UpdateMovieService;
 
 class UpdateMovieController
 {
@@ -22,7 +22,6 @@ class UpdateMovieController
         $this->service->update($id, $_POST);
 
         $response = Response::html(200, "");
-        $response = new Response(200, "", "text/html");
         $response->render();
     }
 }
