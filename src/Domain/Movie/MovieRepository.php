@@ -2,6 +2,8 @@
 
 namespace Juliana\Cinema\Domain\Movie;
 
+use Juliana\Cinema\Domain\EntryNotFoundException;
+
 interface MovieRepository
 {
 
@@ -17,5 +19,8 @@ interface MovieRepository
 
     public function delete(Movie $movie): void;
 
+    /**
+     * @throws EntryNotFoundException
+     */
     public function loadById(int $id): Movie;
 }

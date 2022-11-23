@@ -16,6 +16,7 @@ class CreateCategoryService
     public function create(array $data): void
     {
         $category = new Category (
+            id: 0,
             name: $data["name"],
             createdAt: new DateTime(),
         );

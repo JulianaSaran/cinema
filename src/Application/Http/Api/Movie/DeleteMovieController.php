@@ -16,6 +16,7 @@ class DeleteMovieController
 
     public function __invoke(int $id)
     {
+        //invoca a função delete criada no service e deleta pelo id;
         $this->service->delete($id);
 
         $response = Response::html(200);

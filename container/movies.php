@@ -9,6 +9,7 @@ use Juliana\Cinema\Domain\Movie\DeleteMovieService;
 use Juliana\Cinema\Domain\Movie\ListMovieService;
 use Juliana\Cinema\Domain\Movie\MovieRepository;
 use Juliana\Cinema\Domain\Movie\UpdateMovieService;
+use Juliana\Cinema\Domain\Related\MovieCategoryRepository;
 use Juliana\Cinema\Infra\Movie\MySqlMovieRepository;
 use Psr\Container\ContainerInterface;
 
@@ -30,6 +31,7 @@ return [
     //SERVICE MOVIES
     ListMovieService::class => fn(ContainerInterface $container) => new ListMovieService(
         movieRepository: $container->get(MovieRepository::class),
+        movieCategoryRepository: $container->get(MovieCategoryRepository::class),
     ),
     CreateMovieService::class => fn(ContainerInterface $container) => new CreateMovieService(
         movieRepository: $container->get(MovieRepository::class),

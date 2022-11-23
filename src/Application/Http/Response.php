@@ -30,5 +30,6 @@ class Response
         header("HTTP/1.1 $this->status");
         header("Content-Type: $this->type");
         echo $this->content;
+        exit;
     }
 }

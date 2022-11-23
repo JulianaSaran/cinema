@@ -4,9 +4,11 @@ namespace Juliana\Cinema\Infra\Movie;
 
 use DateTime;
 use DateTimeInterface;
+use Juliana\Cinema\Domain\EntryNotFoundException;
 use Juliana\Cinema\Domain\Movie\Movie;
 use Juliana\Cinema\Domain\Movie\MovieRepository;
 use PDO;
+use TinyContainer\NotFoundException;
 
 class MySqlMovieRepository implements MovieRepository
 {
@@ -38,6 +40,11 @@ class MySqlMovieRepository implements MovieRepository
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([":id" => $id]);
         $item = $stmt->fetch();
+
+        if ($item === false)
+        {
+            throw new EntryNotFoundException();
+        }
 
         return $this->movieFromItem($item);
     }
