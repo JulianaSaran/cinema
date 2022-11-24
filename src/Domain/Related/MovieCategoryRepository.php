@@ -9,6 +9,7 @@ interface MovieCategoryRepository
 {
     public function related(Movie $movie, Category $category): void;
 
-    //public function unrelated(): void;
+    public function unrelated(Movie $movie, Category $category): void;
+
     public function findByMovie(Movie $movie): array;
 }

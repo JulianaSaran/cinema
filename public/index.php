@@ -10,6 +10,7 @@ use Juliana\Cinema\Application\Http\Api\Movie\DeleteMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\ListMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\UpdateMovieController;
 use Juliana\Cinema\Application\Http\Api\Related\RelatedMovieCategoryController;
+use Juliana\Cinema\Application\Http\Api\Related\UnrelatedMovieCategoryController;
 use TinyContainer\TinyContainer;
 
 include_once("../vendor/autoload.php");
@@ -25,7 +26,7 @@ $_SERVER['REQUEST_URI'] = str_replace("index.php/", "", $_SERVER['REQUEST_URI'])
 
 $router = new Router();
 $router->post('/api/movies/{movie}/categories/{category}', $container->get(RelatedMovieCategoryController::class));
-//$router->delete('/api/movies/{movie}/categories/{category}', $container->get(UnrelatedMovieCategoryController::class));
+$router->delete('/api/movies/{movie}/categories/{category}', $container->get(UnrelatedMovieCategoryController::class));
 
 $router->get('/api/movies', $container->get(ListMovieController::class));
 $router->post('/api/movies', $container->get(CreateMovieController::class));
