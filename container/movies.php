@@ -3,10 +3,13 @@
 use Juliana\Cinema\Application\Http\Api\Movie\CreateMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\DeleteMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\ListMovieController;
+use Juliana\Cinema\Application\Http\Api\Movie\MovieDetailedController;
 use Juliana\Cinema\Application\Http\Api\Movie\UpdateMovieController;
+use Juliana\Cinema\Domain\Comment\CommentRepository;
 use Juliana\Cinema\Domain\Movie\CreateMovieService;
 use Juliana\Cinema\Domain\Movie\DeleteMovieService;
 use Juliana\Cinema\Domain\Movie\ListMovieService;
+use Juliana\Cinema\Domain\Movie\MovieDetailedService;
 use Juliana\Cinema\Domain\Movie\MovieRepository;
 use Juliana\Cinema\Domain\Movie\UpdateMovieService;
 use Juliana\Cinema\Domain\Related\MovieCategoryRepository;
@@ -27,11 +30,13 @@ return [
     DeleteMovieController::class => fn(ContainerInterface $container) => new DeleteMovieController(
         service: $container->get(DeleteMovieService::class),
     ),
+    MovieDetailedController::class => fn(ContainerInterface $container) => new MovieDetailedController(
+        service: $container->get(MovieDetailedService::class),
+    ),
 
     //SERVICE MOVIES
     ListMovieService::class => fn(ContainerInterface $container) => new ListMovieService(
         movieRepository: $container->get(MovieRepository::class),
-        movieCategoryRepository: $container->get(MovieCategoryRepository::class),
     ),
     CreateMovieService::class => fn(ContainerInterface $container) => new CreateMovieService(
         movieRepository: $container->get(MovieRepository::class),
@@ -42,6 +47,12 @@ return [
     DeleteMovieService::class => fn(ContainerInterface $container) => new DeleteMovieService(
         movieRepository: $container->get(MovieRepository::class),
     ),
+    MovieDetailedService::class => fn(ContainerInterface $container) => new MovieDetailedService(
+        movieRepository: $container->get(MovieRepository::class),
+        movieCategoryRepository: $container->get(MovieCategoryRepository::class),
+        commentRepository: $container->get(CommentRepository::class),
+
+),
 
     //REPOSITORY MOVIES
     MovieRepository::class => fn(ContainerInterface $container) => new MySqlMovieRepository(

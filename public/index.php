@@ -5,9 +5,13 @@ use Juliana\Cinema\Application\Http\Api\Category\CreateCategoryController;
 use Juliana\Cinema\Application\Http\Api\Category\DeleteCategoryController;
 use Juliana\Cinema\Application\Http\Api\Category\ListCategoryController;
 use Juliana\Cinema\Application\Http\Api\Category\UpdateCategoryController;
+use Juliana\Cinema\Application\Http\Api\Comment\CreateCommentController;
+use Juliana\Cinema\Application\Http\Api\Comment\DeleteCommentController;
+use Juliana\Cinema\Application\Http\Api\Comment\ListCommentController;
 use Juliana\Cinema\Application\Http\Api\Movie\CreateMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\DeleteMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\ListMovieController;
+use Juliana\Cinema\Application\Http\Api\Movie\MovieDetailedController;
 use Juliana\Cinema\Application\Http\Api\Movie\UpdateMovieController;
 use Juliana\Cinema\Application\Http\Api\Related\RelatedMovieCategoryController;
 use Juliana\Cinema\Application\Http\Api\Related\UnrelatedMovieCategoryController;
@@ -20,6 +24,7 @@ $container = new TinyContainer(array_merge(
     include __DIR__ . "/../container/movies.php",
     include __DIR__ . "/../container/categories.php",
     include __DIR__ . "/../container/movieCategory.php",
+    include __DIR__ . "/../container/comments.php",
 ));
 
 $_SERVER['REQUEST_URI'] = str_replace("index.php/", "", $_SERVER['REQUEST_URI']);
@@ -27,6 +32,10 @@ $_SERVER['REQUEST_URI'] = str_replace("index.php/", "", $_SERVER['REQUEST_URI'])
 $router = new Router();
 $router->post('/api/movies/{movie}/categories/{category}', $container->get(RelatedMovieCategoryController::class));
 $router->delete('/api/movies/{movie}/categories/{category}', $container->get(UnrelatedMovieCategoryController::class));
+
+$router->get('/api/movies/{movie}/comments', $container->get(ListCommentController::class));
+$router->post('/api/movies/{movie}/comments', $container->get(CreateCommentController::class));
+$router->delete('/api/comments/{id}', $container->get(DeleteCommentController::class));
 
 $router->get('/api/movies', $container->get(ListMovieController::class));
 $router->post('/api/movies', $container->get(CreateMovieController::class));
@@ -36,6 +45,9 @@ $router->get('/api/categories', $container->get(ListCategoryController::class));
 $router->post('/api/categories', $container->get(CreateCategoryController::class));
 $router->post('/api/categories/{id}', $container->get(UpdateCategoryController::class));
 $router->delete('/api/categories/{id}', $container->get(DeleteCategoryController::class));
+
+$router->get('/api/movies/{id}', $container->get(MovieDetailedController::class));
+
 
 
 

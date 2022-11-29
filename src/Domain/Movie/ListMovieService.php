@@ -2,18 +2,13 @@
 
 namespace Juliana\Cinema\Domain\Movie;
 
-use DateTimeInterface;
-use Juliana\Cinema\Domain\Related\MovieCategoryRepository;
-
 class ListMovieService
 {
     private MovieRepository $movieRepository;
-    private MovieCategoryRepository $movieCategoryRepository;
 
-    public function __construct(MovieRepository $movieRepository, MovieCategoryRepository $movieCategoryRepository)
+    public function __construct(MovieRepository $movieRepository)
     {
         $this->movieRepository = $movieRepository;
-        $this->movieCategoryRepository = $movieCategoryRepository;
     }
 
     /**
@@ -22,12 +17,7 @@ class ListMovieService
     public function getAll()
     {
         return array_map(
-            fn(Movie $movie) => new MovieDetailed(
-                id: $movie->id,
-                name: $movie->name,
-                launchedAt: $movie->launchedAt->format(DateTimeInterface::ATOM),
-                categories: $this->movieCategoryRepository->findByMovie($movie),
-            ),
+            fn (Movie $movie) => $movie->toArray(),
             $this->movieRepository->find(),
         );
     }

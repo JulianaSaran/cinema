@@ -11,7 +11,7 @@ class DeleteCategoryService
         $this->categoryRepository = $categoryRepository;
     }
 
-    public function delete(int $id)
+    public function delete(int $id): void
     {
         $category = $this->categoryRepository->loadById($id);
 

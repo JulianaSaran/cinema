@@ -11,9 +11,9 @@ class DeleteMovieService
         $this->movieRepository = $movieRepository;
     }
 
-    public function delete(int $id)
+    public function delete(int $id): void
     {
-        //Carrega o filme pelo repositório de filme atraves da função que carrega uma linha pelo id
+        //Carrega o filme pelo repositório de filme através da função que carrega uma linha pelo id
        $movie = $this->movieRepository->loadById($id);
 
        //Deleta o filme pela função delete que foi configurada no MySqlMovieRepository
