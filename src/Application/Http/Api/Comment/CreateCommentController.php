@@ -2,7 +2,6 @@
 
 namespace Juliana\Cinema\Application\Http\Api\Comment;
 
-use Juliana\Cinema\Application\Http\Response;
 use Juliana\Cinema\Domain\Comment\CreateCommentService;
 
 class CreateCommentController

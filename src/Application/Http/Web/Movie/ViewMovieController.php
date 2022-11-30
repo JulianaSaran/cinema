@@ -1,0 +1,29 @@
+<?php
+
+namespace Juliana\Cinema\Application\Http\Web\Movie;
+
+use Juliana\Cinema\Application\Http\Response;
+use Juliana\Cinema\Domain\Movie\ListMovieService;
+use Juliana\Cinema\Domain\Movie\MovieDetailedService;
+use Juliana\Cinema\Framework\Blade\Template;
+
+class ViewMovieController
+{
+    private MovieDetailedService $service;
+    private Template $template;
+
+    public function __construct(MovieDetailedService $service, Template $template)
+    {
+        $this->service = $service;
+        $this->template = $template;
+    }
+
+    public function __invoke(int $id)
+    {
+        $movie = $this->service->getMovie($id);
+
+        $content = $this->template->process("movie.view", ["movie" => $movie]);
+
+        Response::html(200, $content)->render();
+    }
+}

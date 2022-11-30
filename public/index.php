@@ -15,6 +15,10 @@ use Juliana\Cinema\Application\Http\Api\Movie\MovieDetailedController;
 use Juliana\Cinema\Application\Http\Api\Movie\UpdateMovieController;
 use Juliana\Cinema\Application\Http\Api\Related\RelatedMovieCategoryController;
 use Juliana\Cinema\Application\Http\Api\Related\UnrelatedMovieCategoryController;
+use Juliana\Cinema\Application\Http\Api\User\CreateUserController;
+use Juliana\Cinema\Application\Http\Api\User\ListUserController;
+use Juliana\Cinema\Application\Http\Web\HomeController;
+use Juliana\Cinema\Application\Http\Web\Movie\ViewMovieController;
 use TinyContainer\TinyContainer;
 
 include_once("../vendor/autoload.php");
@@ -25,11 +29,22 @@ $container = new TinyContainer(array_merge(
     include __DIR__ . "/../container/categories.php",
     include __DIR__ . "/../container/movieCategory.php",
     include __DIR__ . "/../container/comments.php",
+    include __DIR__ . "/../container/users.php",
 ));
 
 $_SERVER['REQUEST_URI'] = str_replace("index.php/", "", $_SERVER['REQUEST_URI']);
 
 $router = new Router();
+
+/**
+ * ROTAS DO PORTAL
+ */
+$router->get('/', $container->get(HomeController::class));
+$router->get('/movies/{id}', $container->get(ViewMovieController::class));
+
+/**
+ * ROTAS DE API
+ */
 $router->post('/api/movies/{movie}/categories/{category}', $container->get(RelatedMovieCategoryController::class));
 $router->delete('/api/movies/{movie}/categories/{category}', $container->get(UnrelatedMovieCategoryController::class));
 
@@ -45,6 +60,8 @@ $router->get('/api/categories', $container->get(ListCategoryController::class));
 $router->post('/api/categories', $container->get(CreateCategoryController::class));
 $router->post('/api/categories/{id}', $container->get(UpdateCategoryController::class));
 $router->delete('/api/categories/{id}', $container->get(DeleteCategoryController::class));
+$router->get('/api/users/', $container->get(ListUserController::class));
+$router->post('/api/users/', $container->get(CreateUserController::class));
 
 $router->get('/api/movies/{id}', $container->get(MovieDetailedController::class));
 

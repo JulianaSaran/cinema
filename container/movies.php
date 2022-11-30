@@ -5,6 +5,8 @@ use Juliana\Cinema\Application\Http\Api\Movie\DeleteMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\ListMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\MovieDetailedController;
 use Juliana\Cinema\Application\Http\Api\Movie\UpdateMovieController;
+use Juliana\Cinema\Application\Http\Web\HomeController;
+use Juliana\Cinema\Application\Http\Web\Movie\ViewMovieController;
 use Juliana\Cinema\Domain\Comment\CommentRepository;
 use Juliana\Cinema\Domain\Movie\CreateMovieService;
 use Juliana\Cinema\Domain\Movie\DeleteMovieService;
@@ -13,6 +15,7 @@ use Juliana\Cinema\Domain\Movie\MovieDetailedService;
 use Juliana\Cinema\Domain\Movie\MovieRepository;
 use Juliana\Cinema\Domain\Movie\UpdateMovieService;
 use Juliana\Cinema\Domain\Related\MovieCategoryRepository;
+use Juliana\Cinema\Framework\Blade\Template;
 use Juliana\Cinema\Infra\Movie\MySqlMovieRepository;
 use Psr\Container\ContainerInterface;
 
@@ -20,6 +23,11 @@ return [
     //CONTROLLERS MOVIES
     ListMovieController::class => fn(ContainerInterface $container) => new ListMovieController(
         service: $container->get(ListMovieService::class),
+    ),
+    //CONTROLLERS MOVIES
+    HomeController::class => fn(ContainerInterface $container) => new HomeController(
+        service: $container->get(ListMovieService::class),
+        template: $container->get(Template::class),
     ),
     CreateMovieController::class => fn(ContainerInterface $container) => new CreateMovieController(
         service: $container->get(CreateMovieService::class),
@@ -32,6 +40,10 @@ return [
     ),
     MovieDetailedController::class => fn(ContainerInterface $container) => new MovieDetailedController(
         service: $container->get(MovieDetailedService::class),
+    ),
+    ViewMovieController::class => fn(ContainerInterface $container) => new ViewMovieController(
+        service: $container->get(MovieDetailedService::class),
+        template: $container->get(Template::class),
     ),
 
     //SERVICE MOVIES

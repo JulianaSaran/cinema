@@ -1,5 +1,6 @@
 <?php
 
+use Juliana\Cinema\Framework\Blade\Template;
 use Psr\Container\ContainerInterface;
 
 return [
@@ -10,4 +11,7 @@ return [
         "",
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
     ),
+
+    //Framework
+    Template::class => fn(ContainerInterface $container) => new Template(),
 ];

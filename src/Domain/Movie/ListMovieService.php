@@ -16,9 +16,6 @@ class ListMovieService
      */
     public function getAll()
     {
-        return array_map(
-            fn (Movie $movie) => $movie->toArray(),
-            $this->movieRepository->find(),
-        );
+        return $this->movieRepository->find();
     }
 }

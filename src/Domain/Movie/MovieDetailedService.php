@@ -31,12 +31,7 @@ class MovieDetailedService
             name: $movie->name,
             launchedAt: $movie->launchedAt->format(DateTimeInterface::ATOM),
             categories: $this->movieCategoryRepository->findByMovie($movie),
-            comments: array_map(
-                function (Comment $comment) {
-                    return $comment->toArray();
-                },
-                $this->commentRepository->findByMovie($movie),
-            ),
+            comments: $this->commentRepository->findByMovie($movie),
         );
     }
 }
