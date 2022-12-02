@@ -83,4 +83,21 @@ class MySqlUserRepository implements UserRepository
         ]);
 
     }
+
+    public function loadById(int $id): User
+    {
+        $query = "SELECT * FROM users WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(["id"=> $id]);
+        $result = $stmt->fetch();
+
+          return $this->userFromItens($result);
+    }
+
+    public function delete(User $user): void
+    {
+        $query = "DELETE FROM users WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(["id"=>$user->id]);
+    }
 }

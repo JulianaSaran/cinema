@@ -51,11 +51,15 @@ class MySqlMovieRepository implements MovieRepository
 
     public function create(Movie $movie): void
     {
-        $query = "INSERT INTO movies (id, name, launched_at, created_at) VALUES (:id, :name, :launchedAt, :createdAt)";
+        $query = "INSERT INTO movies (id, name, description, image, trailer, launched_at, created_at) 
+                    VALUES (:id, :name, :description, :image, :trailer, :launchedAt, :createdAt)";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([
             ":id" => $movie->id,
             ":name" => $movie->name,
+            ":description" => $movie->description,
+            "image" => $movie->image,
+            "trailer" => $movie->trailer,
             ":launchedAt" => $movie->launchedAt->format(DateTimeInterface::ATOM),
             ":createdAt" => $movie->createdAt->format(DateTimeInterface::ATOM),
         ]);
@@ -63,12 +67,16 @@ class MySqlMovieRepository implements MovieRepository
 
     public function update(Movie $movie): void
     {
-        $query = "UPDATE movies SET id = :id, name = :name, launched_at = :launchedAt, created_at = :createdAt 
+        $query = "UPDATE movies SET id = :id, name = :name, description = :description, image = :image, 
+                  trailer = :trailer, launched_at = :launchedAt, created_at = :createdAt 
               WHERE id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([
             ":id" => $movie->id,
             ":name" => $movie->name,
+            ":description" => $movie->description,
+            "image" => $movie->image,
+            "trailer" => $movie->trailer,
             ":launchedAt" => $movie->launchedAt->format(DateTimeInterface::ATOM),
             ":createdAt" => $movie->createdAt->format(DateTimeInterface::ATOM),
         ]);
@@ -86,6 +94,9 @@ class MySqlMovieRepository implements MovieRepository
         return new Movie(
             id: $item["id"],
             name: $item["name"],
+            description: $item ["description"],
+            image: $item["image"],
+            trailer: $item["trailer"],
             launchedAt: new DateTime($item["launched_at"]),
             createdAt: new DateTime($item["created_at"]),
         );

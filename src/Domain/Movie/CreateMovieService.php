@@ -24,6 +24,9 @@ class CreateMovieService
         $movie = new Movie(
             id:0,
             name: $data["name"],
+            description: $data ["description"],
+            image: $data["image"],
+            trailer: $data["trailer"],
             launchedAt: new DateTime($data["launchedAt"]),
             createdAt: new DateTime(),
         );

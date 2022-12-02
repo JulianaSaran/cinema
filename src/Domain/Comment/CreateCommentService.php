@@ -20,6 +20,7 @@ class CreateCommentService
             movieId: $movieId,
             writer: $data["writer"],
             comment: $data["comment"],
+            rating: $data["rating"],
             commentedAt: new DateTime(),
         );
         $this->commentRepository->create($comment);

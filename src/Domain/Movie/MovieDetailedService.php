@@ -29,6 +29,9 @@ class MovieDetailedService
         return new MovieDetailed(
             id: $movie->id,
             name: $movie->name,
+            description: $movie->description,
+            image: $movie->image,
+            trailer: $movie->trailer,
             launchedAt: $movie->launchedAt->format(DateTimeInterface::ATOM),
             categories: $this->movieCategoryRepository->findByMovie($movie),
             comments: $this->commentRepository->findByMovie($movie),

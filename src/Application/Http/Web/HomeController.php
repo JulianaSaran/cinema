@@ -21,7 +21,8 @@ class HomeController
     {
         $movies = $this->service->getAll();
 
-        $content = $this->template->process("movie.list", ["movies" => $movies]);
+        //$content = $this->template->process("movie.list", ["movies" => $movies]);
+        $content = $this->template->process("index", []);
 
         Response::html(200, $content)->render();
     }

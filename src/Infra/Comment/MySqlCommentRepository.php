@@ -42,20 +42,22 @@ class MySqlCommentRepository implements CommentRepository
             movieId: $item["movie_id"],
             writer: $item["writer"],
             comment: $item["comment"],
+            rating: $item["rating"],
             commentedAt: new DateTime($item["commented_at"]) ,
         );
     }
 
     public function create(Comment $comment): void
     {
-        $query = "INSERT INTO comments (id, movie_id, writer, comment, commented_at) 
-                    VALUES (:id, :movieId, :writer, :comment, :commentedAt)";
+        $query = "INSERT INTO comments (id, movie_id, writer, comment, rating, commented_at) 
+                    VALUES (:id, :movieId, :writer, :comment, :rating, :commentedAt)";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([
             ":id"=> $comment->id,
             ":movieId"=> $comment->getMovieId(),
             ":writer"=> $comment->writer,
             ":comment"=> $comment->comment,
+            ":rating"=> $comment->rating,
             ":commentedAt"=> $comment->commentedAt->format(DateTimeInterface::ATOM),
         ]);
     }

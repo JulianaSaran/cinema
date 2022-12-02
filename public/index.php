@@ -16,7 +16,9 @@ use Juliana\Cinema\Application\Http\Api\Movie\UpdateMovieController;
 use Juliana\Cinema\Application\Http\Api\Related\RelatedMovieCategoryController;
 use Juliana\Cinema\Application\Http\Api\Related\UnrelatedMovieCategoryController;
 use Juliana\Cinema\Application\Http\Api\User\CreateUserController;
+use Juliana\Cinema\Application\Http\Api\User\DeleteUserController;
 use Juliana\Cinema\Application\Http\Api\User\ListUserController;
+use Juliana\Cinema\Application\Http\Api\User\UpdateUserController;
 use Juliana\Cinema\Application\Http\Web\HomeController;
 use Juliana\Cinema\Application\Http\Web\Movie\ViewMovieController;
 use TinyContainer\TinyContainer;
@@ -62,6 +64,9 @@ $router->post('/api/categories/{id}', $container->get(UpdateCategoryController::
 $router->delete('/api/categories/{id}', $container->get(DeleteCategoryController::class));
 $router->get('/api/users/', $container->get(ListUserController::class));
 $router->post('/api/users/', $container->get(CreateUserController::class));
+$router->post('/api/users/{id}', $container->get(UpdateUserController::class));
+$router->delete('/api/users/{id}', $container->get(DeleteUserController::class));
+
 
 $router->get('/api/movies/{id}', $container->get(MovieDetailedController::class));
 
