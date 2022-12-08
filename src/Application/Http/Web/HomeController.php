@@ -19,7 +19,7 @@ class HomeController
 
     public function __invoke()
     {
-        $movies = $this->service->getAll();
+        //$movies = $this->service->getAll();
 
         //$content = $this->template->process("movie.list", ["movies" => $movies]);
         $content = $this->template->process("index", []);

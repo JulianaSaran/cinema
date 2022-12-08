@@ -2,6 +2,8 @@
 
 namespace Juliana\Cinema\Application\Http;
 
+use Juliana\Cinema\Framework\Session\Session;
+
 class Response
 {
     private int $status;
@@ -25,8 +27,27 @@ class Response
         return new Response($status, $content, "text/html");
     }
 
-    public function render()
+    public static function redirect(string $location, ?Session $session = null): void
     {
+        if($session !== null)
+        {
+            $_SESSION = $session->data;
+        }
+
+        header("HTTP/1.1 301");
+        header("Content-Type: text/html");
+        header("Location: $location");
+
+        exit;
+    }
+
+    public function render(?Session $session = null): void
+    {
+        if($session !== null)
+        {
+            $_SESSION = $session->data;
+        }
+
         header("HTTP/1.1 $this->status");
         header("Content-Type: $this->type");
         echo $this->content;

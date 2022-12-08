@@ -14,8 +14,7 @@ class User implements JsonSerializable
     public string $email;
     public string $password;
     public string $image;
-    public string $token;
-    public string $type;
+    public UserType $type;
     public DateTime $createdAt;
 
     public function __construct(
@@ -25,8 +24,7 @@ class User implements JsonSerializable
         string   $email,
         string   $password,
         string   $image,
-        string   $token,
-        string   $type,
+        UserType   $type,
         DateTime $createdAt,
     )
     {
@@ -36,7 +34,6 @@ class User implements JsonSerializable
         $this->email = $email;
         $this->password = $password;
         $this->image = $image;
-        $this->token = $token;
         $this->type = $type;
         $this->createdAt = $createdAt;
     }
@@ -50,8 +47,7 @@ class User implements JsonSerializable
             "email" => $this->email,
             "password" => $this->password,
             "image" => $this->image,
-            "token" => $this->token,
-            "type" => $this->type,
+            "type" => UserType::from($this->type),
             "createdAt" => $this->createdAt->format(DateTimeInterface::ATOM),
         ];
     }

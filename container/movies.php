@@ -5,6 +5,7 @@ use Juliana\Cinema\Application\Http\Api\Movie\DeleteMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\ListMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\MovieDetailedController;
 use Juliana\Cinema\Application\Http\Api\Movie\UpdateMovieController;
+use Juliana\Cinema\Application\Http\Web\Auth\AuthController;
 use Juliana\Cinema\Application\Http\Web\HomeController;
 use Juliana\Cinema\Application\Http\Web\Movie\ViewMovieController;
 use Juliana\Cinema\Domain\Comment\CommentRepository;

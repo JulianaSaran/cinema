@@ -19,13 +19,18 @@ use Juliana\Cinema\Application\Http\Api\User\CreateUserController;
 use Juliana\Cinema\Application\Http\Api\User\DeleteUserController;
 use Juliana\Cinema\Application\Http\Api\User\ListUserController;
 use Juliana\Cinema\Application\Http\Api\User\UpdateUserController;
+use Juliana\Cinema\Application\Http\Web;
+use Juliana\Cinema\Application\Http\Web\Auth\AuthController;
+use Juliana\Cinema\Application\Http\Web\Auth\AuthUserController;
 use Juliana\Cinema\Application\Http\Web\HomeController;
 use Juliana\Cinema\Application\Http\Web\Movie\ViewMovieController;
 use TinyContainer\TinyContainer;
 
 include_once("../vendor/autoload.php");
+session_start();
 
 $container = new TinyContainer(array_merge(
+    include __DIR__ . "/../container/account.php",
     include __DIR__ . "/../container/infrastructure.php",
     include __DIR__ . "/../container/movies.php",
     include __DIR__ . "/../container/categories.php",
@@ -43,6 +48,13 @@ $router = new Router();
  */
 $router->get('/', $container->get(HomeController::class));
 $router->get('/movies/{id}', $container->get(ViewMovieController::class));
+
+
+$router->get('/auth', $container->get(AuthController::class));
+$router->post('/auth', $container->get(AuthUserController::class));
+$router->get('/logout', $container->get(Web\Auth\LogoutUserController::class));
+$router->post('/users', $container->get(Web\Auth\CreateUserController::class));
+$router->get('/account', $container->get(Web\Auth\AccountController::class));
 
 /**
  * ROTAS DE API
@@ -62,16 +74,13 @@ $router->get('/api/categories', $container->get(ListCategoryController::class));
 $router->post('/api/categories', $container->get(CreateCategoryController::class));
 $router->post('/api/categories/{id}', $container->get(UpdateCategoryController::class));
 $router->delete('/api/categories/{id}', $container->get(DeleteCategoryController::class));
-$router->get('/api/users/', $container->get(ListUserController::class));
-$router->post('/api/users/', $container->get(CreateUserController::class));
+$router->get('/api/users', $container->get(ListUserController::class));
+$router->post('/api/users', $container->get(CreateUserController::class));
 $router->post('/api/users/{id}', $container->get(UpdateUserController::class));
 $router->delete('/api/users/{id}', $container->get(DeleteUserController::class));
 
 
 $router->get('/api/movies/{id}', $container->get(MovieDetailedController::class));
-
-
-
 
 
 $router->run();
