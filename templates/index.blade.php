@@ -1,9 +1,10 @@
 <?php
 
+use Juliana\Cinema\Domain\Home\Home;
 use Juliana\Cinema\Domain\Movie\Movie;
 
 /**
- * @var Movie[] $movies
+ * @var Home $home
  */
 
 ?>
@@ -14,10 +15,11 @@ use Juliana\Cinema\Domain\Movie\Movie;
     <p class="section-description">Veja as críticas:</p>
     <div class="movie-container"></div>
     <div class="row">
-        @foreach($movies as $movie)
+        @foreach($home->movies as $movie)
             <div class="col-3">
                 <div class="card movie-card">
-                    <div class="card-img-top" style="background-image: url('img/movies/{{$movie->getImageMovie()}}')"></div>
+                    <div class="card-img-top"
+                         style="background-image: url('img/movies/{{$movie->getImageMovie()}}')"></div>
                     <div class="card-body">
                         <p class="card-rating">
                             <i class="fas fa-star"></i>
@@ -35,14 +37,17 @@ use Juliana\Cinema\Domain\Movie\Movie;
         @endforeach
     </div>
 
+    <div class="row">
+        @foreach($home->categories as $category)
+            <div class="col-3">
+                <h2 class="section-title">{{ $category->name }}</h2>
 
-    <h2 class="section-title">Animação</h2>
-    <p class="section-description">Veja as melhores animações:</p>
-    <div class="movie-container"></div>
-
-    <h2 class="section-title">Drama</h2>
-    <p class="section-description">Veja os melhores dramas:</p>
-    <div class="movie-container"></div>
+                @foreach($category->movies as $movie)
+                    <div class="section-title">{{ $movie->name }}</div>
+                @endforeach
+            </div>
+        @endforeach
+    </div>
 </div>
 
 @include('footer')

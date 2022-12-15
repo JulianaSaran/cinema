@@ -31,6 +31,6 @@ class RelatedMovieCategoryService
         $category = $this->categoryRepository->loadById($categoryId);
 
         //Salvar relação
-        $this->movieCategoryRepository->related($movie, $category);
+        $this->movieCategoryRepository->relate($movie, $category);
     }
 }

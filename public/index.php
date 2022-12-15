@@ -42,6 +42,7 @@ $container = new TinyContainer(array_merge(
     include __DIR__ . "/../container/movieCategory.php",
     include __DIR__ . "/../container/comments.php",
     include __DIR__ . "/../container/users.php",
+    include __DIR__."/../container/home.php",
 ));
 
 $_SERVER['REQUEST_URI'] = str_replace("index.php/", "", $_SERVER['REQUEST_URI']);

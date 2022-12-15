@@ -4,6 +4,7 @@ namespace Juliana\Cinema\Infra\Movie;
 
 use DateTime;
 use DateTimeInterface;
+use Juliana\Cinema\Domain\Category\Category;
 use Juliana\Cinema\Domain\EntryNotFoundException;
 use Juliana\Cinema\Domain\Movie\Movie;
 use Juliana\Cinema\Domain\Movie\MovieRepository;

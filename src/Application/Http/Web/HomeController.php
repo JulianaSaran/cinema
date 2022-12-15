@@ -4,29 +4,27 @@ namespace Juliana\Cinema\Application\Http\Web;
 
 
 use Juliana\Cinema\Application\Http\Response;
+use Juliana\Cinema\Domain\Home\HomeService;
 use Juliana\Cinema\Domain\Movie\ListMovieService;
 use Juliana\Cinema\Framework\Blade\Template;
 
 class HomeController
 {
     private Template $template;
-    private ListMovieService $service;
+    private HomeService $service;
 
 
-    public function __construct(ListMovieService $service,Template $template)
+    public function __construct(HomeService $service,Template $template)
     {
-
         $this->template = $template;
-
         $this->service = $service;
     }
 
     public function __invoke()
     {
-        $movies = $this->service->getAll();
+        $home = $this->service->getHomeData();
 
-        $content = $this->template->process("index", ["movies" => $movies]);
-        //$content = $this->template->process("index", []);
+        $content = $this->template->process("index", ["home" => $home]);
 
         Response::html(200, $content)->render();
     }

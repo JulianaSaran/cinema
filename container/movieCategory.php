@@ -33,8 +33,5 @@ return [
     ),
 
     //REPOSITORY
-    MovieCategoryRepository::class =>fn(ContainerInterface $container) => new MySqlMovieCategoryRepository(
-        pdo: $container->get(PDO::class),
-        categoryRepository: $container->get(CategoryRepository::class),
-    ),
+    MovieCategoryRepository::class => TinyContainer::resolve(MySqlMovieCategoryRepository::class),
 ];

@@ -23,7 +23,6 @@ return [
     ListMovieController::class => fn(ContainerInterface $container) => new ListMovieController(
         service: $container->get(ListMovieService::class),
     ),
-    HomeController::class => TinyContainer::resolve(HomeController::class),
 
     CreateMovieController::class => fn(ContainerInterface $container) => new CreateMovieController(
         service: $container->get(CreateMovieService::class),
