@@ -31,12 +31,14 @@ class Response
     {
         if($session !== null)
         {
-            $_SESSION = $session->data;
+            $_SESSION = array_merge($_SESSION, $session->data);
         }
+
+        $serverName = __BASE_URL__;
 
         header("HTTP/1.1 301");
         header("Content-Type: text/html");
-        header("Location: $location");
+        header("Location: $serverName/$location");
 
         exit;
     }

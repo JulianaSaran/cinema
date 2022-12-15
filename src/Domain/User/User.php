@@ -5,6 +5,8 @@ namespace Juliana\Cinema\Domain\User;
 use DateTime;
 use DateTimeInterface;
 use JsonSerializable;
+use Juliana\Cinema\Application\Http\Response;
+use Juliana\Cinema\Framework\Session\Session;
 
 class User implements JsonSerializable
 {
@@ -36,6 +38,21 @@ class User implements JsonSerializable
         $this->image = $image;
         $this->type = $type;
         $this->createdAt = $createdAt;
+    }
+
+    public function fullName(): string
+    {
+        return $this->name . " " . $this->lastname;
+    }
+
+    public function getImageUser():string
+    {
+        if ($this->image === "")
+        {
+            return "user.png";
+        }
+
+        return $this->image;
     }
 
     public function jsonSerialize(): mixed

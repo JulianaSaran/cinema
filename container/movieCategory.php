@@ -9,6 +9,7 @@ use Juliana\Cinema\Domain\Related\RelatedMovieCategoryService;
 use Juliana\Cinema\Domain\Related\UnrelatedMovieCategoryService;
 use Juliana\Cinema\Infra\Related\MySqlMovieCategoryRepository;
 use Psr\Container\ContainerInterface;
+use TinyContainer\TinyContainer;
 
 return [
     //CONTROLLERS

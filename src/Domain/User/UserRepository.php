@@ -16,7 +16,9 @@ interface UserRepository
 
     public function update(User $user): void;
 
+    public function updatePassword(User $user): void;
+
+    public function updateImage(User $user): void;
+
     public function delete(User $user): void;
-
-
 }

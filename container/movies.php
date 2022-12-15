@@ -5,31 +5,26 @@ use Juliana\Cinema\Application\Http\Api\Movie\DeleteMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\ListMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\MovieDetailedController;
 use Juliana\Cinema\Application\Http\Api\Movie\UpdateMovieController;
-use Juliana\Cinema\Application\Http\Web\Auth\AuthController;
 use Juliana\Cinema\Application\Http\Web\HomeController;
 use Juliana\Cinema\Application\Http\Web\Movie\ViewMovieController;
-use Juliana\Cinema\Domain\Comment\CommentRepository;
 use Juliana\Cinema\Domain\Movie\CreateMovieService;
 use Juliana\Cinema\Domain\Movie\DeleteMovieService;
 use Juliana\Cinema\Domain\Movie\ListMovieService;
 use Juliana\Cinema\Domain\Movie\MovieDetailedService;
 use Juliana\Cinema\Domain\Movie\MovieRepository;
 use Juliana\Cinema\Domain\Movie\UpdateMovieService;
-use Juliana\Cinema\Domain\Related\MovieCategoryRepository;
 use Juliana\Cinema\Framework\Blade\Template;
 use Juliana\Cinema\Infra\Movie\MySqlMovieRepository;
 use Psr\Container\ContainerInterface;
+use TinyContainer\TinyContainer;
 
 return [
     //CONTROLLERS MOVIES
     ListMovieController::class => fn(ContainerInterface $container) => new ListMovieController(
         service: $container->get(ListMovieService::class),
     ),
-    //CONTROLLERS MOVIES
-    HomeController::class => fn(ContainerInterface $container) => new HomeController(
-        service: $container->get(ListMovieService::class),
-        template: $container->get(Template::class),
-    ),
+    HomeController::class => TinyContainer::resolve(HomeController::class),
+
     CreateMovieController::class => fn(ContainerInterface $container) => new CreateMovieController(
         service: $container->get(CreateMovieService::class),
     ),
@@ -60,15 +55,8 @@ return [
     DeleteMovieService::class => fn(ContainerInterface $container) => new DeleteMovieService(
         movieRepository: $container->get(MovieRepository::class),
     ),
-    MovieDetailedService::class => fn(ContainerInterface $container) => new MovieDetailedService(
-        movieRepository: $container->get(MovieRepository::class),
-        movieCategoryRepository: $container->get(MovieCategoryRepository::class),
-        commentRepository: $container->get(CommentRepository::class),
-
-),
+    MovieDetailedService::class => TinyContainer::resolve(MovieDetailedService::class),
 
     //REPOSITORY MOVIES
-    MovieRepository::class => fn(ContainerInterface $container) => new MySqlMovieRepository(
-        pdo: $container->get(PDO::class),
-    ),
+    MovieRepository::class => TinyContainer::resolve(MySqlMovieRepository::class),
 ];

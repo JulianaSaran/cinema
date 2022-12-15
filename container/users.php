@@ -2,7 +2,9 @@
 
 use Juliana\Cinema\Application\Http\Api;
 use Juliana\Cinema\Application\Http\Web\Auth\AuthController;
+use Juliana\Cinema\Application\Http\Web\Auth\UpdateImageController;
 use Juliana\Cinema\Domain\User\Auth\AuthUserService;
+use Juliana\Cinema\Domain\User\Auth\UpdateUserImageService;
 use Juliana\Cinema\Domain\User\CreateUserService;
 use Juliana\Cinema\Domain\User\DeleteUserService;
 use Juliana\Cinema\Domain\User\ListUserService;
@@ -13,6 +15,7 @@ use Juliana\Cinema\Infra\User\HttpUserFactory;
 use Juliana\Cinema\Infra\User\MySqlUserRepository;
 use Psr\Container\ContainerInterface;
 use Juliana\Cinema\Application\Http\Web;
+use TinyContainer\TinyContainer;
 
 return [
     //CONTROLLER
@@ -38,6 +41,8 @@ return [
         service: $container->get(AuthUserService::class),
     ),
 
+    UpdateImageController::class => TinyContainer::resolve(UpdateImageController::class),
+
     //SERVICE
     ListUserService::class => fn(ContainerInterface $container) => new ListUserService(
         userRepository: $container->get(UserRepository::class),
@@ -54,6 +59,7 @@ return [
     AuthUserService::class => fn(ContainerInterface $container) => new AuthUserService(
         userRepository: $container->get(UserRepository::class),
     ),
+    UpdateUserImageService::class => TinyContainer::resolve(UpdateUserImageService::class),
 
     //REPOSITORY
     UserRepository::class => fn(ContainerInterface $container) => new MySqlUserRepository(

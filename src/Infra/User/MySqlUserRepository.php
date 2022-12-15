@@ -103,6 +103,14 @@ class MySqlUserRepository implements UserRepository
         );
     }
 
+    public function updatePassword(User $user): void
+    {
+        $query = "UPDATE users SET password = :password WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($this->buildParams($user));
+
+    }
+
     private function buildParams(User $user): array
     {
         return [
@@ -118,4 +126,12 @@ class MySqlUserRepository implements UserRepository
     }
 
 
+    public function updateImage(User $user): void
+    {
+        $query = 'UPDATE users SET image = :image WHERE id = :id';
+        $stmt = $this->pdo->prepare($query);
+        //$stmt->execute($this->buildParams($user));
+        //
+        $stmt->execute([':image' => $user->image, ':id' => $user->id]);
+    }
 }

@@ -22,12 +22,17 @@ use Juliana\Cinema\Application\Http\Api\User\UpdateUserController;
 use Juliana\Cinema\Application\Http\Web;
 use Juliana\Cinema\Application\Http\Web\Auth\AuthController;
 use Juliana\Cinema\Application\Http\Web\Auth\AuthUserController;
+use Juliana\Cinema\Application\Http\Web\Auth\UpdateImageController;
 use Juliana\Cinema\Application\Http\Web\HomeController;
 use Juliana\Cinema\Application\Http\Web\Movie\ViewMovieController;
 use TinyContainer\TinyContainer;
 
 include_once("../vendor/autoload.php");
+
 session_start();
+const __PUBLIC_DIR__ = __DIR__;
+//const __BASE_URL__ = 'http://localhost/curso_php/21_Cinema/public/index.php';
+const __BASE_URL__ = 'http://localhost:8000';
 
 $container = new TinyContainer(array_merge(
     include __DIR__ . "/../container/account.php",
@@ -55,6 +60,10 @@ $router->post('/auth', $container->get(AuthUserController::class));
 $router->get('/logout', $container->get(Web\Auth\LogoutUserController::class));
 $router->post('/users', $container->get(Web\Auth\CreateUserController::class));
 $router->get('/account', $container->get(Web\Auth\AccountController::class));
+$router->post('/account', $container->get(Web\Auth\UpdateUserController::class));
+$router->post('/account/password', $container->get(Web\Auth\UpdatePasswordController::class));
+$router->get('/movies/{id}', $container->get(ViewMovieController::class));
+$router->post('/account/image', $container->get(UpdateImageController::class));
 
 /**
  * ROTAS DE API

@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-4" id="register-container">
                 <h2>Registrar</h2>
-                <form action="index.php/users" method="POST">
+                <form action="users" method="POST">
                     <input type="hidden" name="type" value="register">
                     <div class="form-group">
                         <label for="name">Nome:</label>

@@ -32,6 +32,16 @@ class Movie
         $this->trailer = $trailer;
     }
 
+    public function getImageMovie():string
+    {
+        if ($this->image === "") {
+
+            return "movie_cover.jpg";
+        }
+
+        return $this->image;
+    }
+
     public function toArray(): array
     {
         return [

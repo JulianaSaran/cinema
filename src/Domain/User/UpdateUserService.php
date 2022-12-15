@@ -19,10 +19,15 @@ class UpdateUserService
         $user->name = $data["name"];
         $user->lastname = $data["lastname"];
         $user->email = $data["email"];
-        $user->password = $data["password"];
-        $user->image = $data["image"];
-        $user->type = $data["type"];
 
         $this->userRepository->update($user);
+    }
+
+    public function updatePassword(int $id, array $data): void
+    {
+        $user = $this->userRepository->loadById($id);
+        $user->password = password_hash($data["password"], PASSWORD_DEFAULT);
+
+        $this->userRepository->updatePassword($user);
     }
 }

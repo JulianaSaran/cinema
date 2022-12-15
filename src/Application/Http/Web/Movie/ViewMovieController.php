@@ -3,7 +3,6 @@
 namespace Juliana\Cinema\Application\Http\Web\Movie;
 
 use Juliana\Cinema\Application\Http\Response;
-use Juliana\Cinema\Domain\Movie\ListMovieService;
 use Juliana\Cinema\Domain\Movie\MovieDetailedService;
 use Juliana\Cinema\Framework\Blade\Template;
 
@@ -22,7 +21,7 @@ class ViewMovieController
     {
         $movie = $this->service->getMovie($id);
 
-        $content = $this->template->process("movie.view", ["movie" => $movie]);
+        $content = $this->template->process("movie", ["movie" => $movie]);
 
         Response::html(200, $content)->render();
     }
