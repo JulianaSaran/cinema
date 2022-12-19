@@ -23,7 +23,7 @@ use Juliana\Cinema\Application\Http\Web;
 use Juliana\Cinema\Application\Http\Web\Auth\AuthController;
 use Juliana\Cinema\Application\Http\Web\Auth\AuthUserController;
 use Juliana\Cinema\Application\Http\Web\Auth\UpdateImageController;
-use Juliana\Cinema\Application\Http\Web\HomeController;
+use Juliana\Cinema\Application\Http\Web\Home\HomeController;
 use Juliana\Cinema\Application\Http\Web\Movie\ViewMovieController;
 use TinyContainer\TinyContainer;
 
@@ -43,6 +43,7 @@ $container = new TinyContainer(array_merge(
     include __DIR__ . "/../container/comments.php",
     include __DIR__ . "/../container/users.php",
     include __DIR__."/../container/home.php",
+    include __DIR__."/../container/dashboard.php",
 ));
 
 $_SERVER['REQUEST_URI'] = str_replace("index.php/", "", $_SERVER['REQUEST_URI']);
@@ -65,6 +66,8 @@ $router->post('/account', $container->get(Web\Auth\UpdateUserController::class))
 $router->post('/account/password', $container->get(Web\Auth\UpdatePasswordController::class));
 $router->get('/movies/{id}', $container->get(ViewMovieController::class));
 $router->post('/account/image', $container->get(UpdateImageController::class));
+$router->get('/dashboard', $container->get(Web\Dashboard\DashboardController::class));
+$router->get('/new', $container->get(Web\Movie\NewMovieController::class));
 
 /**
  * ROTAS DE API

@@ -16,6 +16,6 @@ class ListMovieService
      */
     public function getAll()
     {
-        return $this->movieRepository->find();
+        return $this->movieRepository->getAll();
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-namespace Juliana\Cinema\Application\Http\Web;
+namespace Juliana\Cinema\Application\Http\Web\Home;
 
 
 use Juliana\Cinema\Application\Http\Response;
 use Juliana\Cinema\Domain\Home\HomeService;
-use Juliana\Cinema\Domain\Movie\ListMovieService;
 use Juliana\Cinema\Framework\Blade\Template;
 
 class HomeController

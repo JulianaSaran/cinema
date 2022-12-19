@@ -13,7 +13,7 @@ interface MovieRepository
 
     public function create(Movie $movie): void;
 
-    public function find(): array;
+    public function getAll(): array;
 
     public function update(Movie $movie): void;
 

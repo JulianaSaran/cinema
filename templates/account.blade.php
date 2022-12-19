@@ -31,7 +31,7 @@ use Juliana\Cinema\Domain\User\User;
                         <input type="text" class="form-control " id="email" name="email" placeholder="Digite seu email"
                                value="{{$user->email}}">
                     </div>
-                    <input type="submit" class="btn card-btn" value="Alterar">
+                    <input type="submit" class="btn card-btn btn-auto-width" value="Alterar">
                 </form>
             </div>
             <div class="col-md-4">
@@ -43,7 +43,7 @@ use Juliana\Cinema\Domain\User\User;
                         <label for="image">Foto:</label>
                         <input type=file class="form-control-file" name="image">
                     </div>
-                    <input type="submit" class="btn card-btn" value="Alterar imagem">
+                    <input type="submit" class="btn card-btn btn-auto-width" value="Alterar imagem">
                 </form>
             </div>
         </div>
@@ -65,7 +65,7 @@ use Juliana\Cinema\Domain\User\User;
                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
                                placeholder="Confirme sua senha">
                     </div>
-                    <input type="submit" class="btn card-btn" value="Alterar senha">
+                    <input type="submit" class="btn card-btn btn-auto-width" value="Alterar senha">
                 </form>
             </div>
         </div>

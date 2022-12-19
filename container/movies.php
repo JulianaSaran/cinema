@@ -5,7 +5,7 @@ use Juliana\Cinema\Application\Http\Api\Movie\DeleteMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\ListMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\MovieDetailedController;
 use Juliana\Cinema\Application\Http\Api\Movie\UpdateMovieController;
-use Juliana\Cinema\Application\Http\Web\HomeController;
+use Juliana\Cinema\Application\Http\Web\Movie\NewMovieController;
 use Juliana\Cinema\Application\Http\Web\Movie\ViewMovieController;
 use Juliana\Cinema\Domain\Movie\CreateMovieService;
 use Juliana\Cinema\Domain\Movie\DeleteMovieService;
@@ -40,6 +40,7 @@ return [
         service: $container->get(MovieDetailedService::class),
         template: $container->get(Template::class),
     ),
+    NewMovieController::class => TinyContainer::resolve(NewMovieController::class),
 
     //SERVICE MOVIES
     ListMovieService::class => fn(ContainerInterface $container) => new ListMovieService(

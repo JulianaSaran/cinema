@@ -39,6 +39,7 @@ $flash = FlashMessage::fromSession();
             <ul class="navbar-nav">
                 <li class="nav-item">
                     @if($user !== null)
+                        <a  href="/dashboard" class="nav-link">Filmes</a>
                         <a href="/account" class="nav-link"><?= $user->name ?></a>
                         <a href="/logout" class="nav-link">Sair</a>
                     @else

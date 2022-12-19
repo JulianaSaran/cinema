@@ -1,7 +1,6 @@
 <?php
 
 use Juliana\Cinema\Domain\Home\Home;
-use Juliana\Cinema\Domain\Movie\Movie;
 
 /**
  * @var Home $home
@@ -33,17 +32,24 @@ use Juliana\Cinema\Domain\Movie\Movie;
                     </div>
                 </div>
             </div>
-
         @endforeach
     </div>
-
-    <div class="row">
+    <div class="row-cols-2">
         @foreach($home->categories as $category)
-            <div class="col-3">
-                <h2 class="section-title">{{ $category->name }}</h2>
-
+            <h2 class="section-title">{{ $category->name }}</h2>
+            <div class="row">
                 @foreach($category->movies as $movie)
-                    <div class="section-title">{{ $movie->name }}</div>
+                    <div class="col-3">
+                        <div class="card movie-card">
+                            <div class="card-img-top"
+                                 style="background-image: url('img/movies/{{$movie->getImageMovie()}}')"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="#">{{ $movie->name }}</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
             </div>
         @endforeach

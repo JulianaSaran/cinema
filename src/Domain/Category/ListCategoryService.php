@@ -13,6 +13,6 @@ class ListCategoryService
 
     public function getAll()
     {
-       return $this->categoryRepository->find();
+       return $this->categoryRepository->getAll();
     }
 }

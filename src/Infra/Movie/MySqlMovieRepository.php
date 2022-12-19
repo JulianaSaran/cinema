@@ -20,7 +20,7 @@ class MySqlMovieRepository implements MovieRepository
         $this->pdo = $pdo;
     }
 
-    public function find(): array
+    public function getAll(): array
     {
         $query = "SELECT * FROM movies";
         $stmt = $this->pdo->prepare($query);

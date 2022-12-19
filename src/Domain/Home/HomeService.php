@@ -26,10 +26,10 @@ class HomeService
     public function getHomeData(): Home
     {
         return new Home(
-            movies: $this->movieRepository->find(),
+            movies: $this->movieRepository->getAll(),
             categories: array_map(
                 fn(Category $category) =>$this->getCategoryDetailed($category),
-                $this->categoryRepository->find(),
+                $this->categoryRepository->getAll(),
             ),
         );
 

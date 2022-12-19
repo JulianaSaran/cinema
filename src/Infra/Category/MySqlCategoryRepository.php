@@ -18,7 +18,7 @@ class MySqlCategoryRepository implements CategoryRepository
     }
 
 
-    public function find(): array
+    public function getAll(): array
     {
         $query = "SELECT * FROM categories";
         $stmt = $this->pdo->prepare($query);

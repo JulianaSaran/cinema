@@ -9,7 +9,7 @@ interface CategoryRepository
      */
     public function loadById(int $id): Category;
 
-    public function find(): array;
+    public function getAll(): array;
 
     public function create(Category $category): void;
 
