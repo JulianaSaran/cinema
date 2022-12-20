@@ -67,7 +67,8 @@ $router->post('/account/password', $container->get(Web\Auth\UpdatePasswordContro
 $router->get('/movies/{id}', $container->get(ViewMovieController::class));
 $router->post('/account/image', $container->get(UpdateImageController::class));
 $router->get('/dashboard', $container->get(Web\Dashboard\DashboardController::class));
-$router->get('/new', $container->get(Web\Movie\NewMovieController::class));
+$router->get('/dashboard/new', $container->get(Web\Movie\NewMovieController::class));
+$router->post('/dashboard/movies', $container->get(Web\Movie\AddMovieController::class));
 
 /**
  * ROTAS DE API

@@ -13,7 +13,7 @@ use Juliana\Cinema\Domain\Dashboard\DashboardDetailed;
     <h2 class="section-title">Dashboard</h2>
     <p class="section-description">Adicione ou Atualize as informações dos filmes:</p>
     <div class="col-md-12" id="add-movie-container">
-        <a href="/new" class="btn card-btn btn-auto-width">
+        <a href="/dashboard/new" class="btn card-btn btn-auto-width">
             <i class="fas fa-plus"></i> Adicionar filme
         </a>
         <div class="col-md-12" id="movies-dashboard">

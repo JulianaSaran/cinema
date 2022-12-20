@@ -24,7 +24,7 @@ class UpdateImageController
         $user = $this->factory->fromSession();
 
         try {
-            $this->service->updateImage($user->id, $_FILES);
+            $this->service->updateImage($user->id);
         } catch (Exception $e) {
             Response::redirect("account", Session::danger($e->getMessage()));
         }

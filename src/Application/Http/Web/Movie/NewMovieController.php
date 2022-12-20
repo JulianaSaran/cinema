@@ -2,28 +2,26 @@
 
 namespace Juliana\Cinema\Application\Http\Web\Movie;
 
-use Exception;
 use Juliana\Cinema\Application\Http\Response;
-use Juliana\Cinema\Domain\Movie\CreateMovieService;
-use Juliana\Cinema\Framework\Session\Session;
+use Juliana\Cinema\Domain\Category\ListCategoryService;
+use Juliana\Cinema\Framework\Blade\Template;
 
 class NewMovieController
 {
-    private CreateMovieService $service;
+    private ListCategoryService $service;
+    private Template $template;
 
-    public function __construct(CreateMovieService $service)
+    public function __construct(ListCategoryService $service, Template $template)
     {
         $this->service = $service;
+        $this->template = $template;
     }
 
     public function __invoke()
     {
-      try{
-          $this->service->create($_POST);
-      }catch (Exception $e) {
-          Response::redirect("newMovie", Session::danger($e->getMessage()));
-      }
-        Response::redirect("dashboard", Session::success("Criado com sucesso"));
-    }
+        $categories = $this->service->getAll();
+        $content = $this->template->process("dashboard.new", ['categories' => $categories]);
 
+        Response::html(200, $content)->render();
+    }
 }

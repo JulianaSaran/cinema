@@ -3,6 +3,7 @@
 use Juliana\Cinema\Application\Http\Api;
 use Juliana\Cinema\Application\Http\Web\Auth\AuthController;
 use Juliana\Cinema\Application\Http\Web\Auth\UpdateImageController;
+use Juliana\Cinema\Domain\UploadImageService;
 use Juliana\Cinema\Domain\User\Auth\AuthUserService;
 use Juliana\Cinema\Domain\User\Auth\UpdateUserImageService;
 use Juliana\Cinema\Domain\User\CreateUserService;
@@ -60,6 +61,8 @@ return [
         userRepository: $container->get(UserRepository::class),
     ),
     UpdateUserImageService::class => TinyContainer::resolve(UpdateUserImageService::class),
+
+    UploadImageService::class=>TinyContainer::resolve(UploadImageService::class),
 
     //REPOSITORY
     UserRepository::class => fn(ContainerInterface $container) => new MySqlUserRepository(
