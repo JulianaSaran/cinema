@@ -5,14 +5,17 @@ use Juliana\Cinema\Application\Http\Api\Movie\DeleteMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\ListMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\MovieDetailedController;
 use Juliana\Cinema\Application\Http\Api\Movie\UpdateMovieController;
-use Juliana\Cinema\Application\Http\Web\Movie\NewMovieController;
+use Juliana\Cinema\Application\Http\Web\Movie\EditMovieController;
+use Juliana\Cinema\Application\Http\Web\Movie\EditPageController;
+use Juliana\Cinema\Application\Http\Web\Movie\NewMoviePageController;
 use Juliana\Cinema\Application\Http\Web\Movie\UpdateImageMovieController;
-use Juliana\Cinema\Application\Http\Web\Movie\ViewMovieController;
+use Juliana\Cinema\Application\Http\Web\Movie\ViewMoviePageController;
 use Juliana\Cinema\Domain\Movie\CreateMovieService;
 use Juliana\Cinema\Domain\Movie\DeleteMovieService;
 use Juliana\Cinema\Domain\Movie\ListMovieService;
 use Juliana\Cinema\Domain\Movie\MovieDetailedService;
 use Juliana\Cinema\Domain\Movie\MovieRepository;
+use Juliana\Cinema\Domain\Movie\UpdateImageMovieService;
 use Juliana\Cinema\Domain\Movie\UpdateMovieService;
 use Juliana\Cinema\Framework\Blade\Template;
 use Juliana\Cinema\Infra\Movie\MySqlMovieRepository;
@@ -37,29 +40,34 @@ return [
     MovieDetailedController::class => fn(ContainerInterface $container) => new MovieDetailedController(
         service: $container->get(MovieDetailedService::class),
     ),
-    ViewMovieController::class => fn(ContainerInterface $container) => new ViewMovieController(
+    ViewMoviePageController::class => fn(ContainerInterface $container) => new ViewMoviePageController(
         service: $container->get(MovieDetailedService::class),
         template: $container->get(Template::class),
     ),
-    NewMovieController::class => TinyContainer::resolve(NewMovieController::class),
+    NewMoviePageController::class => TinyContainer::resolve(NewMoviePageController::class),
 
     UpdateImageMovieController::class =>TinyContainer::resolve(UpdateImageMovieController::class),
+
+    EditPageController::class => TinyContainer::resolve(EditPageController::class),
+
+    EditMovieController::class =>TinyContainer::resolve(EditMovieController::class),
 
     //SERVICE MOVIES
     ListMovieService::class => fn(ContainerInterface $container) => new ListMovieService(
         movieRepository: $container->get(MovieRepository::class),
     ),
-    CreateMovieService::class => fn(ContainerInterface $container) => new CreateMovieService(
-        movieRepository: $container->get(MovieRepository::class),
-    ),
-    UpdateMovieService::class => fn(ContainerInterface $container) => new UpdateMovieService(
-        movieRepository: $container->get(MovieRepository::class),
-    ),
+    CreateMovieService::class =>TinyContainer::resolve(CreateMovieService::class),
+
+    UpdateMovieService::class=>TinyContainer::resolve(UpdateMovieService::class),
+
     DeleteMovieService::class => fn(ContainerInterface $container) => new DeleteMovieService(
         movieRepository: $container->get(MovieRepository::class),
     ),
     MovieDetailedService::class => TinyContainer::resolve(MovieDetailedService::class),
 
+    UpdateImageMovieService::class =>TinyContainer::resolve(UpdateImageMovieService::class),
+
     //REPOSITORY MOVIES
     MovieRepository::class => TinyContainer::resolve(MySqlMovieRepository::class),
+
 ];

@@ -4,14 +4,19 @@ namespace Juliana\Cinema\Domain\Movie;
 
 use DateTime;
 use Juliana\Cinema\Domain\EntryNotFoundException;
+use Juliana\Cinema\Domain\Related\MovieCategoryRepository;
+use Juliana\Cinema\Domain\Related\RelatedMovieCategoryService;
 
 class UpdateMovieService
 {
     private MovieRepository $movieRepository;
+    private RelatedMovieCategoryService $relater;
 
-    public function __construct(MovieRepository $movieRepository)
+
+    public function __construct(MovieRepository $movieRepository, RelatedMovieCategoryService $relater)
     {
         $this->movieRepository = $movieRepository;
+        $this->relater = $relater;
     }
 
     /**
@@ -28,5 +33,7 @@ class UpdateMovieService
 
         //Atualiza os dados do filme através da função update do MySqlMovieRepository
         $this->movieRepository->update($movie);
+
+        $this->relater->relate($movie->id, $data['category']);
     }
 }

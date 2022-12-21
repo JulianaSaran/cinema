@@ -50,7 +50,7 @@ class MySqlMovieRepository implements MovieRepository
         return $this->movieFromItem($item);
     }
 
-    public function create(Movie $movie): void
+    public function create(Movie $movie): int
     {
         $query = "INSERT INTO movies (id, name, description, image, trailer, launched_at, created_at) 
                     VALUES (:id, :name, :description, :image, :trailer, :launchedAt, :createdAt)";
@@ -64,6 +64,8 @@ class MySqlMovieRepository implements MovieRepository
             ":launchedAt" => $movie->launchedAt->format(DateTimeInterface::ATOM),
             ":createdAt" => $movie->createdAt->format(DateTimeInterface::ATOM),
         ]);
+
+        return (int) $this->pdo->lastInsertId();
     }
 
     public function update(Movie $movie): void

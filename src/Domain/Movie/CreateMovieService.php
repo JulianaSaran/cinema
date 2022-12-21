@@ -3,6 +3,7 @@
 namespace Juliana\Cinema\Domain\Movie;
 
 use DateTime;
+use Juliana\Cinema\Domain\Related\RelatedMovieCategoryService;
 use Juliana\Cinema\Domain\UploadImageService;
 
 /**
@@ -12,11 +13,15 @@ class CreateMovieService
 {
     private MovieRepository $movieRepository;
     private UploadImageService $uploader;
+    private RelatedMovieCategoryService $relater;
 
-    public function __construct(MovieRepository $movieRepository, UploadImageService $uploader)
+    public function __construct(MovieRepository $movieRepository,
+                                UploadImageService $uploader,
+                                RelatedMovieCategoryService $relater)
     {
         $this->movieRepository = $movieRepository;
         $this->uploader = $uploader;
+        $this->relater = $relater;
     }
 
     /**+
@@ -36,6 +41,8 @@ class CreateMovieService
             createdAt: new DateTime(),
         );
 
-        $this->movieRepository->create($movie);
+        $movieId = $this->movieRepository->create($movie);
+
+        $this->relater->relate($movieId, $data['category']);
     }
 }

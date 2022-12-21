@@ -1,7 +1,7 @@
 <?php
 
 use Juliana\Cinema\Application\Http\Api;
-use Juliana\Cinema\Application\Http\Web\Auth\AuthController;
+use Juliana\Cinema\Application\Http\Web\Auth\AuthPageController;
 use Juliana\Cinema\Application\Http\Web\Auth\UpdateImageController;
 use Juliana\Cinema\Domain\UploadImageService;
 use Juliana\Cinema\Domain\User\Auth\AuthUserService;
@@ -35,7 +35,7 @@ return [
     Web\Auth\CreateUserController::class => fn(ContainerInterface $container) => new Web\Auth\CreateUserController(
         service: $container->get(CreateUserService::class),
     ),
-    AuthController::class =>fn(ContainerInterface $container) => new AuthController(
+    AuthPageController::class =>fn(ContainerInterface $container) => new AuthPageController(
         template: $container->get(Template::class),
     ),
     Web\Auth\AuthUserController::class=> fn(ContainerInterface $container) => new Web\Auth\AuthUserController(

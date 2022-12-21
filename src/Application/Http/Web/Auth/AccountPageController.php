@@ -9,7 +9,7 @@ use Juliana\Cinema\Domain\User\CreateUserService;
 use Juliana\Cinema\Framework\Blade\Template;
 use Juliana\Cinema\Framework\Session\Session;
 
-class AccountController
+class AccountPageController
 {
     private LoadAuthenticatedUser $service;
     private Template $template;

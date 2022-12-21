@@ -4,12 +4,10 @@ namespace Juliana\Cinema\Application\Http\Web\Movie;
 
 use Exception;
 use Juliana\Cinema\Application\Http\Response;
-use Juliana\Cinema\Domain\Home\HomeService;
 use Juliana\Cinema\Domain\Movie\CreateMovieService;
-use Juliana\Cinema\Framework\Blade\Template;
 use Juliana\Cinema\Framework\Session\Session;
 
-class AddMovieController
+class CreateMovieController
 {
     private CreateMovieService $service;
 

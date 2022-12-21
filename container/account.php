@@ -1,7 +1,7 @@
 <?php
 
-use Juliana\Cinema\Application\Http\Web\Auth\AccountController;
-use Juliana\Cinema\Application\Http\Web\Auth\LogoutUserController;
+use Juliana\Cinema\Application\Http\Web\Auth\AccountPageController;
+use Juliana\Cinema\Application\Http\Web\Auth\LogoutPageController;
 use Juliana\Cinema\Application\Http\Web\Auth\UpdatePasswordController;
 use Juliana\Cinema\Application\Http\Web\Auth\UpdateUserController;
 use Juliana\Cinema\Domain\User\Auth\LoadAuthenticatedUser;
@@ -14,12 +14,12 @@ use TinyContainer\TinyContainer;
 return [
 
     //CONTROLLERS
-    AccountController::class => fn(ContainerInterface $container) => new AccountController(
+    AccountPageController::class => fn(ContainerInterface $container) => new AccountPageController(
         template: $container->get(Template::class),
         service: $container->get(LoadAuthenticatedUser::class),
     ),
 
-    LogoutUserController::class => fn(ContainerInterface $container) => new LogoutUserController(),
+    LogoutPageController::class => fn(ContainerInterface $container) => new LogoutPageController(),
 
     UpdateUserController::class => TinyContainer::resolve(UpdateUserController::class),
 

@@ -31,7 +31,7 @@ use Juliana\Cinema\Domain\Dashboard\DashboardDetailed;
                         <td><a href="" class="table-movie-title">{{$movie->name}}</a></td>
                         <td><i class="fas fa-star"></i>9</td>
                         <td class="actions-column">
-                            <a href="" class="edit-btn">
+                            <a href="/dashboard/movies/{{$movie->id}}" class="edit-btn">
                                 <i class="far fa-edit"></i> Editar
                             </a>
                             <form action="">

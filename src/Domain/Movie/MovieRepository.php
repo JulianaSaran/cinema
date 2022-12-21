@@ -11,7 +11,7 @@ interface MovieRepository
      * @return array<Movie>
      */
 
-    public function create(Movie $movie): void;
+    public function create(Movie $movie): int;
 
     public function getAll(): array;
 

@@ -5,7 +5,7 @@ namespace Juliana\Cinema\Application\Http\Web\Auth;
 use Juliana\Cinema\Application\Http\Response;
 use Juliana\Cinema\Framework\Blade\Template;
 
-class AuthController
+class AuthPageController
 {
     private Template $template;
 

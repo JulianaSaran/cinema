@@ -6,7 +6,7 @@ use Juliana\Cinema\Application\Http\Response;
 use Juliana\Cinema\Domain\Movie\MovieDetailedService;
 use Juliana\Cinema\Framework\Blade\Template;
 
-class ViewMovieController
+class ViewMoviePageController
 {
     private MovieDetailedService $service;
     private Template $template;
