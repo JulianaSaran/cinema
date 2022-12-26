@@ -7,7 +7,7 @@ use Juliana\Cinema\Application\Http\Response;
 use Juliana\Cinema\Domain\Movie\UpdateMovieService;
 use Juliana\Cinema\Framework\Session\Session;
 
-class EditMovieController
+class UpdateMovieController
 {
     private UpdateMovieService $service;
 
@@ -23,6 +23,7 @@ class EditMovieController
         } catch (Exception $e) {
             Response::redirect("dashboard/movies/$id", Session::danger($e->getMessage()));;
         }
-        Response::redirect('dashboard', Session::success('Atualizado com sucesso'));
+
+        Response::redirect("/movies/$id", Session::success('Atualizado com sucesso'));
     }
 }

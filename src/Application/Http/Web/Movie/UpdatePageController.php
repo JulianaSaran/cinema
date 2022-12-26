@@ -7,7 +7,7 @@ use Juliana\Cinema\Domain\Category\ListCategoryService;
 use Juliana\Cinema\Domain\Movie\MovieDetailedService;
 use Juliana\Cinema\Framework\Blade\Template;
 
-class EditPageController
+class UpdatePageController
 {
     private MovieDetailedService $movieService;
     private ListCategoryService $categoryService;

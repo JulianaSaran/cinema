@@ -2,6 +2,7 @@
 
 namespace Juliana\Cinema\Domain\Movie;
 
+use DateTimeInterface;
 use Juliana\Cinema\Domain\Category\Category;
 use Juliana\Cinema\Domain\Comment\Comment;
 

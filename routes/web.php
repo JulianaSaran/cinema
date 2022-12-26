@@ -20,7 +20,7 @@ return function (Router $router, ContainerInterface $container): void {
         $router->post('/account/password', $container->get(Web\Auth\UpdatePasswordController::class));
     });
 
-    $router->mount('movies', function () use ($router, $container) {
+    $router->mount('/movies', function () use ($router, $container) {
         $router->get('/{id}', $container->get(ViewMoviePageController::class));
     });
 

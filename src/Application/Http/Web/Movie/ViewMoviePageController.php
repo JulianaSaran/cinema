@@ -3,6 +3,7 @@
 namespace Juliana\Cinema\Application\Http\Web\Movie;
 
 use Juliana\Cinema\Application\Http\Response;
+use Juliana\Cinema\Domain\Movie\Movie;
 use Juliana\Cinema\Domain\Movie\MovieDetailedService;
 use Juliana\Cinema\Framework\Blade\Template;
 

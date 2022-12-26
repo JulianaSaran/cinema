@@ -6,7 +6,7 @@ use Juliana\Cinema\Application\Http\Response;
 use Juliana\Cinema\Domain\Category\ListCategoryService;
 use Juliana\Cinema\Framework\Blade\Template;
 
-class NewMoviePageController
+class CreateMoviePageController
 {
     private ListCategoryService $service;
     private Template $template;

@@ -21,7 +21,7 @@ use Juliana\Cinema\Domain\Category\Category;
             </div>
             <div class="form-group mt-3">
                 <label for="category">Categoria</label>
-                <select name="category" id="category" class="form-control" required>
+                <select name="category" id="category" class="form-select" required>
                     @foreach($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
@@ -50,3 +50,14 @@ use Juliana\Cinema\Domain\Category\Category;
 </div>
 
 @include('footer')
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown">
+        Categoria
+    </a>
+    <select name="category" id="category" class="form-control" required>
+        @foreach($categories as $category)
+            <option value="{{$category->id}}">{{$category->name}}</option>
+        @endforeach
+    </select>
+</div>

@@ -4,10 +4,10 @@ use Juliana\Cinema\Application\Http\Api\Movie\CreateMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\DeleteMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\ListMovieController;
 use Juliana\Cinema\Application\Http\Api\Movie\MovieDetailedController;
-use Juliana\Cinema\Application\Http\Api\Movie\UpdateMovieController;
-use Juliana\Cinema\Application\Http\Web\Movie\EditMovieController;
-use Juliana\Cinema\Application\Http\Web\Movie\EditPageController;
-use Juliana\Cinema\Application\Http\Web\Movie\NewMoviePageController;
+use Juliana\Cinema\Application\Http\Api;
+use Juliana\Cinema\Application\Http\Web;
+use Juliana\Cinema\Application\Http\Web\Movie\UpdatePageController;
+use Juliana\Cinema\Application\Http\Web\Movie\CreateMoviePageController;
 use Juliana\Cinema\Application\Http\Web\Movie\UpdateImageMovieController;
 use Juliana\Cinema\Application\Http\Web\Movie\ViewMoviePageController;
 use Juliana\Cinema\Domain\Movie\CreateMovieService;
@@ -31,7 +31,7 @@ return [
     CreateMovieController::class => fn(ContainerInterface $container) => new CreateMovieController(
         service: $container->get(CreateMovieService::class),
     ),
-    UpdateMovieController::class => fn(ContainerInterface $container) => new UpdateMovieController(
+    Api\Movie\UpdateMovieController::class => fn(ContainerInterface $container) => new Api\Movie\UpdateMovieController(
         service: $container->get(UpdateMovieService::class),
     ),
     DeleteMovieController::class => fn(ContainerInterface $container) => new DeleteMovieController(
@@ -40,17 +40,15 @@ return [
     MovieDetailedController::class => fn(ContainerInterface $container) => new MovieDetailedController(
         service: $container->get(MovieDetailedService::class),
     ),
-    ViewMoviePageController::class => fn(ContainerInterface $container) => new ViewMoviePageController(
-        service: $container->get(MovieDetailedService::class),
-        template: $container->get(Template::class),
-    ),
-    NewMoviePageController::class => TinyContainer::resolve(NewMoviePageController::class),
+    ViewMoviePageController::class =>TinyContainer::resolve(ViewMoviePageController::class),
+
+    CreateMoviePageController::class => TinyContainer::resolve(CreateMoviePageController::class),
 
     UpdateImageMovieController::class =>TinyContainer::resolve(UpdateImageMovieController::class),
 
-    EditPageController::class => TinyContainer::resolve(EditPageController::class),
+    UpdatePageController::class => TinyContainer::resolve(UpdatePageController::class),
 
-    EditMovieController::class =>TinyContainer::resolve(EditMovieController::class),
+    Web\Movie\UpdateMovieController::class =>TinyContainer::resolve(Web\Movie\UpdateMovieController::class),
 
     //SERVICE MOVIES
     ListMovieService::class => fn(ContainerInterface $container) => new ListMovieService(

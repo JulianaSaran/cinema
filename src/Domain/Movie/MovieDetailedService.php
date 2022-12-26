@@ -30,7 +30,7 @@ class MovieDetailedService
             id: $movie->id,
             name: $movie->name,
             description: $movie->description,
-            image: $movie->image,
+            image: $movie->getImageMovie(),
             trailer: $movie->trailer,
             launchedAt: $movie->launchedAt->format(DateTimeInterface::ATOM),
             categories: $this->movieCategoryRepository->findByMovie($movie),
