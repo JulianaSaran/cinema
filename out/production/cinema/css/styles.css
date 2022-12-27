@@ -2,7 +2,7 @@ body {
     background-color: #000000;
 }
 
-.navbar-brand {
+.navbar-brand{
     position: relative;
 }
 
@@ -33,7 +33,7 @@ body {
 }
 
 #navbar {
-    min-width: 50%;
+    min-width: 30%;
 }
 
 .navbar-nav {
@@ -45,14 +45,12 @@ body {
     font-weight: bold;
 }
 
-.navbar-nav .nav-item .nav-link {
+.navbar-nav .nav-item .nav-link{
     color: #FFF;
     transition: .5s;
     display: inline-block;
-    font-weight: bold;
 }
-
-.navbar-nav .nav-item .nav-link:hover {
+.navbar-nav .nav-item .nav-link:hover{
     color: #ddd;
 }
 
@@ -102,7 +100,7 @@ body {
 }
 
 #main-container {
-    color: #FFFFFF;
+    color:#FFFFFF;
     min-height: 65vh;
     padding: 40px;
 }
@@ -136,7 +134,7 @@ body {
 }
 
 #login-container h2,
-#register-container h2 {
+#register-container h2{
     text-align: center;
     border-bottom: 2px solid #F5C518;
     width: 200px;
@@ -160,7 +158,7 @@ body {
 
 .card-btn:hover {
     background-color: transparent;
-    color: #f5c518;
+    color:#f5c518;
     border-color: #f5c518;
 }
 
@@ -195,15 +193,13 @@ body {
     width: auto !important;
 }
 
-.add-btn:hover {
+.add-btn:hover{
     background-color: transparent;
-    color: #f5c518;
+    color:#f5c518;
     border-color: #f5c518;
 }
-
 .form-group {
     width: 100%;
-    margin-top: 20px;
 }
 
 .section-title {
@@ -246,7 +242,6 @@ body {
     font-size: 16px;
     color: #FFFFFF;
 }
-
 .fas.fa-star {
     color: #F5C518;
 }
@@ -285,7 +280,7 @@ body {
 }
 
 #movies-dashboard .table th {
-    border-top: none;
+    border-top:none;
 }
 
 #movies-dashboard .table tr {
@@ -322,12 +317,12 @@ body {
 
 .edit-btn {
     background-color: #0DCAF0;
-    color: #FFFFFF;
+    color:#FFFFFF;
 }
 
 .edit-btn:hover {
     background-color: transparent;
-    color: #0DCAF0;
+    color:#0DCAF0;
     text-decoration: none;
 }
 
@@ -342,34 +337,34 @@ body {
     text-decoration: none;
 }
 
-.image-container {
+.movie-details {
+    font-size: 18px ;
+    font-weight: bold;
+    margin-left: -300px;
     margin-bottom: 20px;
-    padding-right: 80px;
 }
 
-.image-container img {
-    max-height: 100%;
+.form-select{
+    margin-top: 10px;
+}
+
+.image-container{
+    max-height: 700px;
     max-width: 100%;
+    margin-top: 80px;
+    margin-left: -200px;
+    margin-bottom: 20px;
 }
 
 .page-title {
     font-size: 50px;
     color: #FFFFFF;
-    margin-bottom: 40px;
 }
 
-.comment-container {
+.col-50 {
     width: 50%
 }
 
-.movie-detailed-container {
-    width: 100%;
-    font-weight: bold;
-}
-
-.label-container {
-    margin-bottom: 20px;
-}
-
-.movie-details {
+.movie-container {
+    width: 50%;
 }

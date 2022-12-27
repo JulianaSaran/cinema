@@ -24,6 +24,6 @@ class UpdateMovieController
             Response::redirect("dashboard/movies/$id", Session::danger($e->getMessage()));;
         }
 
-        Response::redirect("/movies/$id", Session::success('Atualizado com sucesso'));
+        Response::redirect("movie", Session::success('Atualizado com sucesso'));
     }
 }

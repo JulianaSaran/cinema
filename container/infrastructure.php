@@ -9,7 +9,7 @@ return [
     PDO::class => fn(ContainerInterface $container) => new PDO(
         "mysql:host=localhost;dbname=cinema",
         "root",
-        "",
+        "rootroot",
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
     ),
 

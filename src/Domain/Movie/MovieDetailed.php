@@ -2,6 +2,7 @@
 
 namespace Juliana\Cinema\Domain\Movie;
 
+use DateTime;
 use DateTimeInterface;
 use Juliana\Cinema\Domain\Category\Category;
 use Juliana\Cinema\Domain\Comment\Comment;
@@ -33,5 +34,13 @@ class MovieDetailed
         $this->categories = $categories;
         $this->comments = $comments;
 
+    }
+
+    /**
+     * @return string
+     */
+    public function getLaunchedAt(): DateTime
+    {
+        return new DateTime($this->launchedAt);
     }
 }

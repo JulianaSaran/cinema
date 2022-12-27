@@ -1,35 +1,50 @@
 <?php
 
-use Juliana\Cinema\Domain\Movie\Movie;
 use Juliana\Cinema\Domain\Movie\MovieDetailed;
 
 /**
- * @var array<MovieDetailed> $movie
+ * @var MovieDetailed $movie
  */
 ?>
 
 @include('header')
 
-<div id="main-container" class="container-fluid">
+<div id="main-container" class="container">
+    <h1 class="page-title">{{ $movie->name }}</h1>
     <div class="row">
-        <div class="offset-md-1 col-md-6 movie-container">
-            <h1 class="page-title">{{ $movie->name }}</h1>
-            <div class="movie-details">
-                <p>Lançamento: {{ $movie->launchedAt }}</p>
-                <p>Categorias: {{implode("/ ", $movie->categories)}}</p>
-                <span><i class="fas fa-star"> 9</i></span>
+        <div class="col-md-5">
+            <div class="movie-detailed-container">
+                <div class="image-container">
+                    <img src="img/movies/{{ $movie->image }}" alt="">
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="movie-image-container"
-                 style="background-image: url('img/movies/{{ $movie->image }}')">
+        <div class="col-md-7">
+            <div class="movie-details">
+                <div class="label-container">
+                    <label>Categorias: </label>
+                    <div>{{implode("/ ", $movie->categories)}}</div>
+                </div>
+                <div class="label-container">
+                    <label>Lançamento:</label>
+                    <div>{{ $movie->getLaunchedAt()->format("d/m/Y") }}</div>
+                </div>
+                <div class="label-container">
+                    <label>Sinopse:</label>
+                    <div class="description-title"> {{$movie->description}}</div>
+                </div>
+                <p><i class="fas fa-star fa-lg"> 5 </i></p>
             </div>
-            <div class="offset-md-1 col-md-10" id="reviews-container">
-                <h3 id="reviews-title">Comentários</h3>
-                <div class="col-md-12" id="review-form-container">
-                    <h4>Envie seu comentário</h4>
-                    <p class="page-description">Preencha a nota e o comentário sobre o filme</p>
-                    <form action="" id="review-form-id" method="POST">
+            <div class="review-container" id="review-form-container">
+                <h4>Envie seu comentário</h4>
+                <div class="page-description">
+                    <label for="review">Seu comentário:</label>
+                    <div>
+                            <textarea name="reviews" id="reviews" rows="3" class="form-control"
+                                      placeholder="O que você achou do filme"></textarea>
+                    </div>
+                    <input type="submit" class="btn card-btn btn-auto-width" value="Envie seu comentario">
+                    <form action="" id="review-form" method="POST">
                         <input type="hidden" name="type" value="create">
                         <input type="hidden" name="movie_id" value="{{ $movie->id }}">
                         <div class="form-group">
@@ -43,16 +58,11 @@ use Juliana\Cinema\Domain\Movie\MovieDetailed;
                                 <option value="1">1</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="review">Seu comentário:</label>
-                            <textarea name="reviews" id="reviews" rows="3" class="from-control"
-                                      placeholder="O que vocêachou do filme"></textarea>
-                        </div>
-                        <input type="submit" class="btn card-btn btn-auto-width" value="Enviar comentário">
+                        <input type="submit" class="btn card-btn btn-auto-width" value="Envie sua nota">
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 @include('footer')
