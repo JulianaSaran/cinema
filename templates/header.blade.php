@@ -43,7 +43,7 @@ $flash = FlashMessage::fromSession();
                         <a href="/account" class="nav-link"><?= $user->name ?></a>
                         <a href="/logout" class="nav-link">Sair</a>
                     @else
-                        <a href = "/auth" class="nav-link" >Entrar/Cadastrar</a>
+                        <a href = "/auth" class="nav-link" >Entrar / Cadastrar</a>
                     @endif
                 </li>
             </ul>

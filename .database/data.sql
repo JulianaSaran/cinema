@@ -3,6 +3,8 @@ VALUES (1, 'Drama', '2022-11-22 21:58:09.000000'),
        (2, 'Animação', '2022-11-23 13:51:02.000000'),
        (3, 'Romance', '2022-11-29 18:25:42.000000'),
        (4, 'Comédia', '2022-12-19 15:07:54.000000');
+ALTER TABLE `categories`
+    AUTO_INCREMENT = 5;
 
 INSERT INTO `comments` (`id`, `movie_id`, `writer`, `comment`, `rating`, `commented_at`)
 VALUES (4, 2, 'Juliana Saran', 'Filme ótimo também', 0, '2022-11-28 21:14:43'),
@@ -11,6 +13,8 @@ VALUES (4, 2, 'Juliana Saran', 'Filme ótimo também', 0, '2022-11-28 21:14:43')
        (7, 4, 'Juliana Saran', 'Filme baseado no livro homônimo de Erich Maria Ramarque', 0, '2022-11-29 18:24:21'),
        (8, 1, 'Thiago Cordeiro', 'Filme baseado no livro homônimo de Erich Maria Ramarque', 0, '2022-11-29 19:31:01'),
        (9, 1, 'Thiago Cordeiro', 'Filme baseado no livro homônimo de Erich Maria Ramarque', 5, '2022-12-01 15:18:00');
+ALTER TABLE `comments`
+    AUTO_INCREMENT = 10;
 
 INSERT INTO `movies` (`id`, `name`, `description`, `image`, `trailer`, `launched_at`, `created_at`)
 VALUES (1, 'Mulan', '', 'mulan.jpg', 'https://www.youtube.com/watch?v=1Y826kBsgSM', '1998-06-05 00:00:00.000000',
@@ -33,6 +37,8 @@ VALUES (1, 'Mulan', '', 'mulan.jpg', 'https://www.youtube.com/watch?v=1Y826kBsgS
        (12, 'De repente 30',
         'Jenna Rink é uma garota que está descontente com sua própria idade. Em seu 13º aniversário, ela faz um pedido: virar adulta. O pedido milagrosamente se torna realidade e, no dia seguinte, Jenna acorda com 30 anos de idade',
         'de-repente-30.jpg', '', '2022-12-20 18:54:23.000000', '2022-12-20 18:54:23.000000');
+ALTER TABLE `movies`
+    AUTO_INCREMENT = 13;
 
 INSERT INTO `movie_categories` (`movie_id`, `category_id`, `related_at`)
 VALUES (1, 2, '2022-11-24 18:56:45.000000'),

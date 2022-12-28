@@ -2,6 +2,7 @@
 
 namespace Juliana\Cinema\Infra\User;
 
+use Exception;
 use Juliana\Cinema\Domain\User\User;
 use Juliana\Cinema\Domain\User\UserRepository;
 
@@ -16,6 +17,8 @@ class HttpUserFactory
 
     public function fromSession(): User
     {
-        return $this->userRepository->loadById($_SESSION["user"] ?? 0);
+        return $this->userRepository->loadById(
+            $_SESSION["user"] ?? throw new Exception("User not authenticated"),
+        );
     }
 }

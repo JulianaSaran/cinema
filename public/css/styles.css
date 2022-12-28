@@ -2,6 +2,8 @@ body {
     background-color: #000000;
 }
 
+/* Navbar */
+
 .navbar-brand {
     position: relative;
 }
@@ -107,6 +109,8 @@ body {
     padding: 40px;
 }
 
+/* Mensagens */
+
 .msg-container {
     padding: 15px;
 }
@@ -150,6 +154,8 @@ body {
     margin: 30px auto;
 }
 
+/* HOME */
+
 .card-btn {
     color: #000;
     background-color: #f5c518;
@@ -169,7 +175,8 @@ body {
     border-radius: 15px;
 }
 
-#profile-image-container {
+#profile-image-container,
+.profile-image-container {
     width: 150px;
     height: 150px;
     border: 6px solid #f5c518;
@@ -177,6 +184,13 @@ body {
     background-size: cover;
     background-position: center;
     margin: 20px;
+    margin-left: 60px;
+}
+
+.profile-image-container {
+    width: 60px;
+    height: 60px;
+    margin-left: 60px;
 }
 
 .page-description {
@@ -359,7 +373,7 @@ body {
 }
 
 .comment-container {
-    width: 50%
+
 }
 
 .movie-detailed-container {
@@ -371,5 +385,25 @@ body {
     margin-bottom: 20px;
 }
 
-.movie-details {
+.review-container {
+    background-color: #333;
+    padding: 20px;
+    margin-top: 20px;
+    border-top: 4px solid #F5C518;
+}
+
+.review {
+    border-bottom: 1px solid #333;
+}
+
+.author-detailed-container {
+    padding-top: 20px;
+}
+
+.author-name a{
+    color: #F5C518;
+}
+
+.comment-title {
+    color: #999;
 }
