@@ -17,13 +17,12 @@ use Juliana\Cinema\Domain\Movie\MovieDetailedService;
 use Juliana\Cinema\Domain\Movie\MovieRepository;
 use Juliana\Cinema\Domain\Movie\UpdateImageMovieService;
 use Juliana\Cinema\Domain\Movie\UpdateMovieService;
-use Juliana\Cinema\Framework\Blade\Template;
 use Juliana\Cinema\Infra\Movie\MySqlMovieRepository;
 use Psr\Container\ContainerInterface;
 use TinyContainer\TinyContainer;
 
 return [
-    //CONTROLLERS MOVIES
+    //CONTROLLERS MOVIES API
     ListMovieController::class => fn(ContainerInterface $container) => new ListMovieController(
         service: $container->get(ListMovieService::class),
     ),
@@ -40,11 +39,11 @@ return [
     MovieDetailedController::class => fn(ContainerInterface $container) => new MovieDetailedController(
         service: $container->get(MovieDetailedService::class),
     ),
+
+    //CONTROLLER MOVIES WEB
     ViewMoviePageController::class =>TinyContainer::resolve(ViewMoviePageController::class),
 
     CreateMoviePageController::class => TinyContainer::resolve(CreateMoviePageController::class),
-
-    UpdateImageMovieController::class =>TinyContainer::resolve(UpdateImageMovieController::class),
 
     UpdatePageController::class => TinyContainer::resolve(UpdatePageController::class),
 

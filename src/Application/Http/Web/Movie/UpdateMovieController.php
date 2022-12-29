@@ -21,9 +21,9 @@ class UpdateMovieController
         try {
             $this->service->update($id, $_POST);
         } catch (Exception $e) {
-            Response::redirect("dashboard/movies/$id", Session::danger($e->getMessage()));;
+            Response::redirect("dashboard/movies/$id", Session::danger($e->getMessage()));
         }
 
-        Response::redirect("movie", Session::success('Atualizado com sucesso'));
+        Response::redirect("movies/$id", Session::success('Atualizado com sucesso'));
     }
 }

@@ -132,6 +132,7 @@ class MySqlUserRepository implements UserRepository
         $stmt = $this->pdo->prepare($query);
         //$stmt->execute($this->buildParams($user));
         //
-        $stmt->execute([':image' => $user->image, ':id' => $user->id]);
+        $stmt->execute([':image' => $user->image,
+                        ':id' => $user->id]);
     }
 }

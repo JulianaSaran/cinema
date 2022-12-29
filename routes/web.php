@@ -6,6 +6,7 @@ use Juliana\Cinema\Application\Http\Web\Auth\AuthPageController;
 use Juliana\Cinema\Application\Http\Web\Auth\AuthUserController;
 use Juliana\Cinema\Application\Http\Web\Auth\UpdateImageController;
 use Juliana\Cinema\Application\Http\Web\Home\HomeController;
+use Juliana\Cinema\Application\Http\Web\Movie\UpdateMovieController;
 use Juliana\Cinema\Application\Http\Web\Movie\ViewMoviePageController;
 use Psr\Container\ContainerInterface;
 
@@ -22,6 +23,8 @@ return function (Router $router, ContainerInterface $container): void {
 
     $router->mount('/movies', function () use ($router, $container) {
         $router->get('/{id}', $container->get(ViewMoviePageController::class));
+        $router->post('/{id}', $container->get(UpdateMovieController::class));
+        //$router->post('/image', $container->get(Web\Movie\UpdateImageMovieController::class));
     });
 
     $router->mount('/auth', function () use ($router, $container) {

@@ -12,7 +12,7 @@ use Juliana\Cinema\Domain\Category\Category;
 <div id="main-container" class="container-fluid">
     <div class="offset-md-4 col-md-4 new-movie-container">
         <h1 class="page-title">Novo Filme</h1>
-        <p class="page-description">Adicione ou atualize as informações dos filmes:</p>
+        <p class="page-description">Adicione as informações dos filmes:</p>
         <form action="dashboard/movies" id="add-movie-form" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="type" value="create">
             <div class="form-group">
@@ -26,6 +26,11 @@ use Juliana\Cinema\Domain\Category\Category;
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="launchedAt">Lançamento</label>
+                <input type="text" class="form-control" id="launchedAt" name="launchedAt"
+                       placeholder="Digite a data de lançamento do filme">
             </div>
             <div class="form-group mt-3">
                 <label for="description">Sinopse</label>

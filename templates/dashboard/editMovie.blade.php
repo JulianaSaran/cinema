@@ -15,12 +15,18 @@ use Juliana\Cinema\Domain\Movie\MovieDetailed;
     <div class="offset-md-4 col-md-4 new-movie-container">
         <h1 class="page-title">Atualize o filme</h1>
         <p class="page-description">Atualize as informações dos filmes:</p>
-        <form action="/movies/{{$movie->id}}" id="add-movie-form" method="POST" enctype="multipart/form-data">
+        <form action="/movies/{{ $movie->id }}" id="add-movie-form" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="type" value="create">
             <div class="form-group">
                 <label for="title">Título</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Digite o título do filme"
                 value="{{$movie->name}}">
+            </div>
+            <div class="form-group">
+                <label for="launchedAt">Lançamento</label>
+                <input type="text" class="form-control" id="launchedAt" name="launchedAt"
+                       placeholder="Digite a data de lançamento do filme"
+                       value="{{ $movie->launchedAt }}">
             </div>
             <div class="form-group mt-3">
                 <label for="category">Categoria</label>

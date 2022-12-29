@@ -24,15 +24,15 @@ use Juliana\Cinema\Domain\User\User;
         <div class="col-md-7">
             <div class="movie-details">
                 <div class="label-container">
-                    <label>Categorias: </label>
+                    <label>Categorias </label>
                     <div>{{implode("/ ", $movie->categories)}}</div>
                 </div>
                 <div class="label-container">
-                    <label>Lançamento:</label>
+                    <label>Lançamento</label>
                     <div>{{ $movie->getLaunchedAt()->format("d/m/Y") }}</div>
                 </div>
                 <div class="label-container">
-                    <label>Sinopse:</label>
+                    <label>Sinopse</label>
                     <div class="description-title"> {{$movie->description}}</div>
                 </div>
                 <p><i class="fas fa-star fa-lg"> 5 </i></p>
@@ -63,21 +63,6 @@ use Juliana\Cinema\Domain\User\User;
                         <input type="submit" class="btn card-btn btn-auto-width" value="Envie sua nota">
                     </form>
                     <div class="col-md-12 review">
-                        {{--                        <div style="width: 100%; border-bottom: solid 1px">--}}
-                        {{--                            <div style="float: left; width: 120px; padding:10px">--}}
-                        {{--                                <img src="img/users/{{$user->image}}" alt="" style="max-width: 100%; border-radius: 100%">--}}
-                        {{--                            </div>--}}
-                        {{--                            <div class="author-detailed-container" style="float: left">--}}
-                        {{--                                <h4 class="author-name">--}}
-                        {{--                                    <a href="#">{{$user->name}}</a>--}}
-                        {{--                                </h4>--}}
-                        {{--                                <p><i class="fas fa-star"></i>5</p>--}}
-                        {{--                                <div class="col-md-12">--}}
-                        {{--                                    <p>Este é o comentário do usuário</p>--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        </div>--}}
-
                         <div class="card mb-3" style="background: #333">
                             <div class="row g-0">
                                 <div class="col-md-3">
@@ -88,9 +73,7 @@ use Juliana\Cinema\Domain\User\User;
                                     <div class="card-body">
                                         <h5 class="card-title">{{$user->name}}</h5>
                                         <p><i class="fas fa-star"></i>5</p>
-                                        <p class="card-text">This is a wider card with supporting text below as a
-                                            natural lead-in to additional content. This content is a little bit
-                                            longer.</p>
+                                        <p class="card-text">Este é o comentário do usuário</p>
                                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
                                         </p>
                                     </div>
