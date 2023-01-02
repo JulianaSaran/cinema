@@ -5,7 +5,6 @@ use Juliana\Cinema\Framework\Session\FlashMessage;
 $flash = FlashMessage::fromSession();
 
 ?>
-
 <html>
 <head>
     <title>Movies</title>
@@ -15,6 +14,13 @@ $flash = FlashMessage::fromSession();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
 </head>
 <body>
 <header>
@@ -39,7 +45,7 @@ $flash = FlashMessage::fromSession();
             <ul class="navbar-nav">
                 <li class="nav-item">
                     @if($user !== null)
-                        <a  href="/dashboard" class="nav-link">Filmes</a>
+                        <a  href="/dashboard" class="nav-link"><i class="fa-solid fa-plus"></i>Incluir filmes</a>
                         <a href="/account" class="nav-link"><?= $user->name ?></a>
                         <a href="/logout" class="nav-link">Sair</a>
                     @else

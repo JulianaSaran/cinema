@@ -28,4 +28,3 @@
     <p>&copy; 2022 MovieStar</p>
 
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.js"></script>

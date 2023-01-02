@@ -1,6 +1,6 @@
 <?php
 
-use Juliana\Cinema\Application\Http\Web\Dashboard\DashboardController;
+use Juliana\Cinema\Application\Http\Web\Dashboard\DashboardPageController;
 use Juliana\Cinema\Application\Http\Web\Movie\CreateMovieController;
 use Juliana\Cinema\Domain\Dashboard\DashboardService;
 use TinyContainer\TinyContainer;
@@ -8,7 +8,7 @@ use TinyContainer\TinyContainer;
 return [
 
 //Controller
-    DashboardController::class => TinyContainer::resolve(DashboardController::class),
+    DashboardPageController::class => TinyContainer::resolve(DashboardPageController::class),
 
     CreateMovieController::class =>TinyContainer::resolve(CreateMovieController::class),
 

@@ -6,7 +6,12 @@ use Exception;
 
 class UploadImageService
 {
-    public function upload(string $key, string $targetPath)
+    public function hasImage(string $key): bool
+    {
+        return !empty($_FILES['image'][$key]);
+    }
+
+    public function upload(string $key, string $targetPath): string
     {
         if (empty($_FILES[$key])) {
             throw new Exception('Imagem não consta');

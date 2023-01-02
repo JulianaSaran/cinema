@@ -54,15 +54,9 @@ use Juliana\Cinema\Domain\Category\Category;
 
 </div>
 
+<script>
+    $('#launchedAt').datepicker();
+</script>
+
 @include('footer')
 
-<div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown">
-        Categoria
-    </a>
-    <select name="category" id="category" class="form-control" required>
-        @foreach($categories as $category)
-            <option value="{{$category->id}}">{{$category->name}}</option>
-        @endforeach
-    </select>
-</div>

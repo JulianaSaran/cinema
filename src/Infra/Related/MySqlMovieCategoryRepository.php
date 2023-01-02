@@ -54,6 +54,15 @@ class MySqlMovieCategoryRepository implements MovieCategoryRepository
         return $movies;
     }
 
+    public function deleteByMovie (Movie $movie): void
+    {
+        $query = "DELETE FROM movie_categories WHERE movie_id = :movieId";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([
+            ":movieId"=> $movie->id,
+        ]);
+    }
+
     public function unrelated(Movie $movie, Category $category): void
     {
         $query = "DELETE FROM movie_categories WHERE movie_id = :movieId AND category_id = :categoryId";

@@ -49,6 +49,8 @@ return [
 
     Web\Movie\UpdateMovieController::class =>TinyContainer::resolve(Web\Movie\UpdateMovieController::class),
 
+    Web\Movie\DeleteMovieController::class=>TinyContainer::resolve(Web\Movie\DeleteMovieController::class),
+
     //SERVICE MOVIES
     ListMovieService::class => fn(ContainerInterface $container) => new ListMovieService(
         movieRepository: $container->get(MovieRepository::class),
@@ -57,9 +59,8 @@ return [
 
     UpdateMovieService::class=>TinyContainer::resolve(UpdateMovieService::class),
 
-    DeleteMovieService::class => fn(ContainerInterface $container) => new DeleteMovieService(
-        movieRepository: $container->get(MovieRepository::class),
-    ),
+    DeleteMovieService::class => TinyContainer::resolve(DeleteMovieService::class),
+
     MovieDetailedService::class => TinyContainer::resolve(MovieDetailedService::class),
 
     UpdateImageMovieService::class =>TinyContainer::resolve(UpdateImageMovieService::class),

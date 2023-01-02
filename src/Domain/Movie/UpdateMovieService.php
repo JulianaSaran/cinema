@@ -13,15 +13,18 @@ class UpdateMovieService
     private MovieRepository $movieRepository;
     private RelatedMovieCategoryService $relater;
     private UploadImageService $uploader;
+    private MovieCategoryRepository $movieCategoryRepository;
 
 
     public function __construct(MovieRepository $movieRepository,
                                 RelatedMovieCategoryService $relater,
+                                MovieCategoryRepository $movieCategoryRepository,
                                 UploadImageService $uploader)
     {
         $this->movieRepository = $movieRepository;
         $this->relater = $relater;
         $this->uploader = $uploader;
+        $this->movieCategoryRepository = $movieCategoryRepository;
     }
 
     /**
@@ -32,11 +35,16 @@ class UpdateMovieService
         //Carrega os filmes pelo Id
         $movie = $this->movieRepository->loadById($id);
 
+        $this->movieCategoryRepository->deleteByMovie($movie);
+
         //Altera as propriedades do objeto carregado
         $movie->name = $data["name"];
         $movie->launchedAt = new DateTime( $data["launchedAt"]);
         $movie->description = $data["description"];
-        $movie->image = $this->uploader->upload('image', __PUBLIC_DIR__.'/img/movies/');
+
+        if ($this->uploader->hasImage('image')){
+            $movie->image = $this->uploader->upload('image', __PUBLIC_DIR__.'/img/movies/');
+        }
 
         //Atualiza os dados do filme através da função update do MySqlMovieRepository
         $this->movieRepository->update($movie);

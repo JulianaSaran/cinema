@@ -6,9 +6,10 @@ use Juliana\Cinema\Application\Http\Web;
 
 return function (Router $router, ContainerInterface $container): void {
     $router->mount('/dashboard', function () use ($router, $container) {
-        $router->get('', $container->get(Web\Dashboard\DashboardController::class));
+        $router->get('', $container->get(Web\Dashboard\DashboardPageController::class));
         $router->get('/new', $container->get(Web\Movie\CreateMoviePageController::class));
         $router->post('/movies', $container->get(Web\Movie\CreateMovieController::class));
         $router->get('/movies/{id}', $container->get(Web\Movie\UpdatePageController::class));
+        $router->delete('/movies/{id}', $container->get(Web\Movie\DeleteMovieController::class));
     });
 };

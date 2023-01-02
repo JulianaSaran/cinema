@@ -59,4 +59,9 @@ use Juliana\Cinema\Domain\Movie\MovieDetailed;
     </div>
 </div>
 
+<script>
+    $('#launchedAt').datepicker();
+</script>
+
+
 @include('footer')

@@ -14,4 +14,6 @@ interface MovieCategoryRepository
     public function findByMovie(Movie $movie): array;
 
     public function findByCategory(Category $category): array;
+
+    public function deleteByMovie (Movie $movie): void;
 }

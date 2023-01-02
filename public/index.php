@@ -9,9 +9,9 @@ include_once("../vendor/autoload.php");
 
 session_start();
 const __PUBLIC_DIR__ = __DIR__;
-//const __BASE_URL__ = 'http://localhost/curso_php/21_Cinema/public/index.php';
 const __BASE_URL__ = 'http://localhost:8000';
 $_SERVER['REQUEST_URI'] = str_replace("index.php/", "", $_SERVER['REQUEST_URI']);
+$_SERVER['REQUEST_METHOD'] = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 $container = new TinyContainer(array_merge(
     include __DIR__ . "/../container/account.php",

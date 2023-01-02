@@ -7,7 +7,7 @@ use Juliana\Cinema\Domain\Dashboard\DashboardService;
 use Juliana\Cinema\Framework\Blade\Template;
 
 
-class DashboardController
+class DashboardPageController
 {
     private Template $template;
     private DashboardService $service;

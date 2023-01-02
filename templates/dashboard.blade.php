@@ -22,21 +22,20 @@ use Juliana\Cinema\Domain\Dashboard\DashboardDetailed;
                 <th scope="col">#</th>
                 <th scope="col">Título</th>
                 <th scope="col">Nota</th>
-                <th scope="col" class="action-column">Ações</th>
+                <th scope="col" class="action-column"></th>
                 </thead>
                 <tbody>
                 @foreach($dashboard->movies as $movie)
                     <tr>
                         <td scope="row">{{$movie->id}}</td>
                         <td><a href="" class="table-movie-title">{{$movie->name}}</a></td>
-                        <td><i class="fas fa-star"></i>9</td>
+                        <td><i class="fas fa-star"></i>5</td>
                         <td class="actions-column">
                             <a href="/dashboard/movies/{{$movie->id}}" class="edit-btn">
                                 <i class="far fa-edit"></i> Editar
                             </a>
-                            <form action="">
-                                <input type="hidden" name="type" value="delete">
-                                <input type="hidden" name="id" value="">
+                            <form action="dashboard/movies/{{ $movie->id }}" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="delete-btn">
                                     <i class="fas fa-times"></i> Deletar
                                 </button>

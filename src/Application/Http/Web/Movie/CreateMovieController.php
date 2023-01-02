@@ -21,7 +21,7 @@ class CreateMovieController
         try {
             $this->service->create($_POST);
         } catch (Exception $e) {
-            Response::redirect("dashboard.new", Session::danger($e->getMessage()));
+            Response::redirect("dashboard/new", Session::danger($e->getMessage()));
         }
 
         Response::redirect("dashboard", Session::success("Criado com sucesso"));
