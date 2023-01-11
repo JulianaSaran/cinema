@@ -35,6 +35,7 @@ class MovieDetailedService
             launchedAt: $movie->launchedAt->format(DateTimeInterface::ATOM),
             categories: $this->movieCategoryRepository->findByMovie($movie),
             comments: $this->commentRepository->findByMovie($movie),
+            rating: $this->commentRepository->getRating($movie),
         );
     }
 }

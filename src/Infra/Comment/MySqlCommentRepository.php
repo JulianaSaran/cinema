@@ -83,11 +83,11 @@ class MySqlCommentRepository implements CommentRepository
      $stmt->execute(["id"=>$comment->id]);
     }
 
-    public function getRating(Movie $movieId): float
+    public function getRating(Movie $movie): float
     {
         $query = "SELECT avg(rating) as rating FROM comments WHERE movie_id = :movieId";
         $stmt = $this->pdo->prepare($query);
-        $stmt->execute([":movieId" => $movieId]);
+        $stmt->execute([":movieId" => $movie->id]);
         $result = $stmt->fetch();
 
         return $result["rating"];

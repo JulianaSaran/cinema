@@ -31,4 +31,6 @@ class CreateCommentController
 
         Response::redirect("movies/$id", Session::success("Comentário adicionado com sucesso"));
     }
+
+
 }

@@ -21,9 +21,10 @@ class MovieDetailed
 
     /** @var array<Comment> */
     public array $comments;
+    public float $rating;
 
     public function __construct(int $id, string $name, string $description, string $image, string $trailer,
-                                string $launchedAt, array $categories, array $comments)
+                                string $launchedAt, array $categories, array $comments, float $rating)
     {
         $this->id = $id;
         $this->name = $name;
@@ -34,6 +35,7 @@ class MovieDetailed
         $this->categories = $categories;
         $this->comments = $comments;
 
+        $this->rating = $rating;
     }
 
     /**
@@ -43,4 +45,6 @@ class MovieDetailed
     {
         return new DateTime($this->launchedAt);
     }
+
+
 }

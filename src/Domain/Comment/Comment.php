@@ -12,12 +12,12 @@ class Comment
     private int $movieId;
     public User $writer;
     public string $comment;
-    public int $rating;
+    public float $rating;
     public DateTime $commentedAt;
 
 
 
-    public function __construct(int $id, int $movieId, User $writer, string $comment, int $rating, DateTime $commentedAt)
+    public function __construct(int $id, int $movieId, User $writer, string $comment, float $rating, DateTime $commentedAt)
     {
         $this->id = $id;
         $this->movieId = $movieId;
