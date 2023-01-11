@@ -3,6 +3,7 @@
 namespace Juliana\Cinema\Domain\Comment;
 
 use Juliana\Cinema\Domain\Movie\Movie;
+use Juliana\Cinema\Domain\User\User;
 
 interface CommentRepository
 {
@@ -13,4 +14,6 @@ interface CommentRepository
     public function create(Comment $comment): void;
 
     public function delete(Comment $comment): void;
+
+    public function getRating(Movie $movieId): float;
 }

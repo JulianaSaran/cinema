@@ -7,15 +7,18 @@ use DateTimeInterface;
 use Juliana\Cinema\Domain\Comment\Comment;
 use Juliana\Cinema\Domain\Comment\CommentRepository;
 use Juliana\Cinema\Domain\Movie\Movie;
+use Juliana\Cinema\Domain\User\UserRepository;
 use PDO;
 
 class MySqlCommentRepository implements CommentRepository
 {
     private PDO $pdo;
+    private UserRepository $repository;
 
-    public function __construct(PDO $pdo)
+    public function __construct(PDO $pdo, UserRepository $repository)
     {
         $this->pdo = $pdo;
+        $this->repository = $repository;
     }
 
     public function findByMovie(Movie $movie): array
@@ -40,7 +43,7 @@ class MySqlCommentRepository implements CommentRepository
         return new Comment(
             id: $item["id"],
             movieId: $item["movie_id"],
-            writer: $item["writer"],
+            writer: $this->repository->loadById($item["writer"]),
             comment: $item["comment"],
             rating: $item["rating"],
             commentedAt: new DateTime($item["commented_at"]) ,
@@ -55,7 +58,7 @@ class MySqlCommentRepository implements CommentRepository
         $stmt->execute([
             ":id"=> $comment->id,
             ":movieId"=> $comment->getMovieId(),
-            ":writer"=> $comment->writer,
+            ":writer"=> $comment->writer->id,
             ":comment"=> $comment->comment,
             ":rating"=> $comment->rating,
             ":commentedAt"=> $comment->commentedAt->format(DateTimeInterface::ATOM),
@@ -78,5 +81,16 @@ class MySqlCommentRepository implements CommentRepository
      $query = "DELETE FROM comments WHERE id = :id";
      $stmt = $this->pdo->prepare($query);
      $stmt->execute(["id"=>$comment->id]);
+    }
+
+    public function getRating(Movie $movieId): float
+    {
+        $query = "SELECT avg(rating) as rating FROM comments WHERE movie_id = :movieId";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([":movieId" => $movieId]);
+        $result = $stmt->fetch();
+
+        return $result["rating"];
+
     }
 }

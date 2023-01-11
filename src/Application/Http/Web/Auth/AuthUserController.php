@@ -28,7 +28,7 @@ class AuthUserController
         }
 
         Response::redirect(
-            location: "account",
+            location: "",
             session: Session::success("Bem vindo!", ["user" => $user->id]),
         );
     }

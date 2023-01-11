@@ -10,6 +10,7 @@ use Juliana\Cinema\Domain\Comment\ListCommentService;
 use Juliana\Cinema\Domain\Movie\MovieRepository;
 use Juliana\Cinema\Infra\Comment\MySqlCommentRepository;
 use Psr\Container\ContainerInterface;
+use TinyContainer\TinyContainer;
 
 return [
     //CONTROLLER
@@ -36,7 +37,5 @@ return [
     ),
 
     //REPOSITORY
-    CommentRepository::class => fn(ContainerInterface $container) => new MySqlCommentRepository(
-        pdo: $container->get(PDO::class),
-    ),
+    CommentRepository::class => TinyContainer::resolve(MySqlCommentRepository::class),
 ];

@@ -25,10 +25,9 @@ use Juliana\Cinema\Domain\Home\Home;
                             <span class="rating">9</span>
                         </p>
                         <h5 class="card-title">
-                            <a href="#">{{ $movie->name }}</a>
+                            <a href="">{{ $movie->name }}</a>
                         </h5>
-                        <a href="#" class="btn btn-primary rate-btn">Avaliar</a>
-                        <a href="/movies/{{ $movie->id }}" class="btn btn-primary card-btn">Conhecer</a>
+                        <a href="/movies/{{ $movie->id }}" class="btn btn-primary card-btn">Ver Mais...</a>
                     </div>
                 </div>
             </div>
@@ -45,7 +44,7 @@ use Juliana\Cinema\Domain\Home\Home;
                                  style="background-image: url('img/movies/{{$movie->getImageMovie()}}')"></div>
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <a href="#">{{ $movie->name }}</a>
+                                    <a href="/movies/{{ $movie->id }}"> {{ $movie->name }}</a>
                                 </h5>
                             </div>
                         </div>

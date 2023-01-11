@@ -51,6 +51,8 @@ return [
 
     Web\Movie\DeleteMovieController::class=>TinyContainer::resolve(Web\Movie\DeleteMovieController::class),
 
+    Web\Movie\CreateCommentController::class=>TinyContainer::resolve(Web\Movie\CreateCommentController::class),
+
     //SERVICE MOVIES
     ListMovieService::class => fn(ContainerInterface $container) => new ListMovieService(
         movieRepository: $container->get(MovieRepository::class),

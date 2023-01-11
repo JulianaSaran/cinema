@@ -3,6 +3,7 @@
 namespace Juliana\Cinema\Application\Http\Api\Comment;
 
 use Juliana\Cinema\Domain\Comment\CreateCommentService;
+use Juliana\Cinema\Infra\User\HttpUserFactory;
 
 class CreateCommentController
 {

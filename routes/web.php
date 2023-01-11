@@ -22,9 +22,9 @@ return function (Router $router, ContainerInterface $container): void {
     });
 
     $router->mount('/movies', function () use ($router, $container) {
+        $router->post('/{id}/comments', $container->get(Web\Movie\CreateCommentController::class));
         $router->get('/{id}', $container->get(ViewMoviePageController::class));
         $router->post('/{id}', $container->get(UpdateMovieController::class));
-        //$router->post('/image', $container->get(Web\Movie\UpdateImageMovieController::class));
     });
 
     $router->mount('/auth', function () use ($router, $container) {
