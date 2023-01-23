@@ -23,4 +23,6 @@ interface MovieRepository
      * @throws EntryNotFoundException
      */
     public function loadById(int $id): Movie;
+
+    public function findByName(string $name): array;
 }

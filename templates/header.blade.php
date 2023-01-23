@@ -33,7 +33,7 @@ $flash = FlashMessage::fromSession();
                 aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
-        <form action="" method="GET" id="search-form" class="form-inline my-2 my-lg-0">
+        <form action="/search" method="GET" id="search-form" class="form-inline my-2 my-lg-0">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Buscar filmes">
                 <button class="btn btn-light" type="submit" id="button-addon2">

@@ -1,9 +1,11 @@
 <?php
 
 use Juliana\Cinema\Domain\Home\Home;
+use Juliana\Cinema\Domain\Movie\MovieDetailed;
 
 /**
  * @var Home $home
+ * @var MovieDetailed $movieDetailed
  */
 
 ?>
@@ -22,7 +24,7 @@ use Juliana\Cinema\Domain\Home\Home;
                     <div class="card-body">
                         <p class="card-rating">
                             <i class="fas fa-star"></i>
-                            <span class="rating">9</span>
+                            <span class="rating">{{ $movieDetailed->rating }}</span>
                         </p>
                         <h5 class="card-title">
                             <a href="">{{ $movie->name }}</a>

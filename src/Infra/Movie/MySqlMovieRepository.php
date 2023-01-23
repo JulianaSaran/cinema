@@ -92,6 +92,22 @@ class MySqlMovieRepository implements MovieRepository
         $stmt->execute([":id" => $movie->id]);
     }
 
+    public function findByName(string $name): array
+    {
+        $query = " SELECT * FROM movies WHERE name LIKE :name";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([":name" => '%'.$name."%"]);
+        $result = $stmt->fetchAll();
+        $movies = [];
+
+        foreach ($result as $item) {
+            $movies[] = $this->movieFromItem($item);
+        }
+
+        return $movies;
+
+    }
+
     private function movieFromItem(array $item): Movie
     {
         return new Movie(
@@ -104,4 +120,5 @@ class MySqlMovieRepository implements MovieRepository
             createdAt: new DateTime($item["created_at"]),
         );
     }
+
 }

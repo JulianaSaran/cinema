@@ -35,7 +35,16 @@ use Juliana\Cinema\Domain\User\User;
                     <label>Sinopse</label>
                     <div class="description-title"> {{ $movie->description }}</div>
                 </div>
-                <p><i class="fas fa-star fa-lg"> {{$movie->rating}} </i></p>
+                <div class="form-group">
+                    <label for="rating">Nota do filme</label>
+                    <b><span id="average">{{ $movie->rating }} </span>/ 5</b>
+                    <div class="mb-3">
+                        <i class="fas fa-star star-light mr-1 main_star"></i>
+                        <i class="fas fa-star star-light mr-1 main_star"></i>
+                        <i class="fas fa-star star-light mr-1 main_star"></i>
+                        <i class="fas fa-star star-light mr-1 main_star"></i>
+                        <i class="fas fa-star star-light mr-1 main_star"></i>
+                    </div>
             </div>
 
             <div class="review-container" id="review-form-container">
@@ -48,78 +57,15 @@ use Juliana\Cinema\Domain\User\User;
                             <textarea name="comment" id="comment" rows="3" class="form-control"
                                       placeholder="O que você achou do filme"></textarea>
                             </div>
-                            <div class="form-group">
-                                <label for="rating">Nota do filme</label>
-                                <b><span id="average">0.0 </span>/ 5</b>
-                                <div class="mb-3">
-                                    <i class="fas fa-star star-light mr-1 main_star"></i>
-                                    <i class="fas fa-star star-light mr-1 main_star"></i>
-                                    <i class="fas fa-star star-light mr-1 main_star"></i>
-                                    <i class="fas fa-star star-light mr-1 main_star"></i>
-                                    <i class="fas fa-star star-light mr-1 main_star"></i>
-                                </div>
-                                <div class="col-sm-4">
-                                    <p>
-                                        <div class="progress-label-left"><b>5</b> <i class="fas fa-star text-warning"></i>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0"
-                                             aria-valuemin="0" aria-valuemax="100" id="five_star_progress"></div>
-                                        </div>
-                                        <div class="progress-label-right">(<span id="total_five_star_review">0</span>)
-                                        </div>
-                                     </p>
-                                    <p>
-                                        <div class="progress-label-left"><b>4</b> <i class="fas fa-star text-warning"></i>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0"
-                                             aria-valuemin="0" aria-valuemax="100" id="four_star_progress"></div>
-                                        </div>
-                                        <div class="progress-label-right">(<span id="total_four_star_review">0</span>)
-                                        </div>
-                                    </p>
-                                    <p>
-                                        <div class="progress-label-left"><b>3</b> <i class="fas fa-star text-warning"></i>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0"
-                                             aria-valuemin="0" aria-valuemax="100" id="three_star_progress"></div>
-                                        </div>
-                                        <div class="progress-label-right">(<span id="total_three_star_review">0</span>)
-                                        </div>
-                                    </p>
-                                    <p>
-                                        <div class="progress-label-left"><b>2</b> <i class="fas fa-star text-warning"></i>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0"
-                                             aria-valuemin="0" aria-valuemax="100" id="two_star_progress"></div>
-                                        </div>
-                                        <div class="progress-label-right">(<span id="total_two_star_review">0</span>)
-                                        </div>
-                                    </p>
-                                    <p>
-                                        <div class="progress-label-left"><b>1</b> <i class="fas fa-star text-warning"></i>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0"
-                                             aria-valuemin="0" aria-valuemax="100" id="one_star_progress"></div>
-                                        </div>
-                                        <div class="progress-label-right">(<span id="total_one_star_review">0</span>)
-                                        </div>
-                                    </p>
-                                </div>
-
-
-{{--                                <select name="rating" id="rating" class="form-select" required>--}}
-{{--                                    <option value="">Selecione</option>--}}
-{{--                                    <option value="5">5</option>--}}
-{{--                                    <option value="4">4</option>--}}
-{{--                                    <option value="3">3</option>--}}
-{{--                                    <option value="2">2</option>--}}
-{{--                                    <option value="1">1</option>--}}
-{{--                                </select>--}}
+                            <div>
+                                <select name="rating" id="rating" class="form-select" required>
+                                    <option value="">Selecione</option>
+                                    <option value="5">5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                </select>
                             </div>
                             <input type="submit" class="btn card-btn btn-auto-width" value="Envie seu comentário">
                         </form>
