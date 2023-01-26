@@ -15,5 +15,5 @@ interface CommentRepository
 
     public function delete(Comment $comment): void;
 
-    public function getRating(Movie $movieId): float;
+    public function getRating(int $movieId): float;
 }

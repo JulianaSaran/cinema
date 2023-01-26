@@ -12,14 +12,12 @@ class HomeController
 {
     private Template $template;
     private HomeService $service;
-    private MovieDetailed $movieDetailed;
 
 
-    public function __construct(HomeService $service, Template $template, MovieDetailed $movieDetailed)
+    public function __construct(HomeService $service, Template $template)
     {
         $this->template = $template;
         $this->service = $service;
-        $this->movieDetailed = $movieDetailed;
     }
 
     public function __invoke()

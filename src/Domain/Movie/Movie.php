@@ -14,6 +14,7 @@ class Movie
     public string $description;
     public string $image;
     public string $trailer;
+    public float $rating;
 
     public function __construct(int      $id,
                                 string   $name,
@@ -21,7 +22,9 @@ class Movie
                                 string   $image,
                                 string   $trailer,
                                 DateTime $launchedAt,
-                                DateTime $createdAt)
+                                DateTime $createdAt,
+                                float $rating
+    )
     {
         $this->id = $id;
         $this->name = $name;
@@ -30,6 +33,7 @@ class Movie
         $this->description = $description;
         $this->image = $image;
         $this->trailer = $trailer;
+        $this->rating = $rating;
     }
 
     public function getImageMovie():string
@@ -52,6 +56,7 @@ class Movie
             "trailer"=> $this->trailer,
             "launchedAt" => $this->launchedAt->format(DateTimeInterface::ATOM),
             "createdAt" => $this->createdAt->format(DateTimeInterface::ATOM),
+            "rating" => $this->rating,
         ];
     }
 }

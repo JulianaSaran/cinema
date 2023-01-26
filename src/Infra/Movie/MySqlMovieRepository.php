@@ -5,6 +5,7 @@ namespace Juliana\Cinema\Infra\Movie;
 use DateTime;
 use DateTimeInterface;
 use Juliana\Cinema\Domain\Category\Category;
+use Juliana\Cinema\Domain\Comment\CommentRepository;
 use Juliana\Cinema\Domain\EntryNotFoundException;
 use Juliana\Cinema\Domain\Movie\Movie;
 use Juliana\Cinema\Domain\Movie\MovieRepository;
@@ -14,10 +15,12 @@ use TinyContainer\NotFoundException;
 class MySqlMovieRepository implements MovieRepository
 {
     private PDO $pdo;
+    private CommentRepository $commentRepository;
 
-    public function __construct(PDO $pdo)
+    public function __construct(PDO $pdo, CommentRepository $commentRepository)
     {
         $this->pdo = $pdo;
+        $this->commentRepository = $commentRepository;
     }
 
     public function getAll(): array
@@ -118,6 +121,7 @@ class MySqlMovieRepository implements MovieRepository
             trailer: $item["trailer"],
             launchedAt: new DateTime($item["launched_at"]),
             createdAt: new DateTime($item["created_at"]),
+            rating: $this->commentRepository->getRating($item["id"]),
         );
     }
 

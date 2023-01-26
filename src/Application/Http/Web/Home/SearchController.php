@@ -18,15 +18,15 @@ class SearchController
         $this->service = $service;
     }
 
-    public function __invoke($id)
+    public function __invoke($name)
     {
         try {
             $this->service->findMovie($name);
         } catch (Exception $e) {
-            Response::redirect("movies/$id", Session::danger($e->getMessage()));
+            Response::redirect("search", Session::danger($e->getMessage()));
         }
 
-        Response::redirect("movies/$id");
+        Response::redirect("search");
 
 
     }

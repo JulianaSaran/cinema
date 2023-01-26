@@ -5,7 +5,6 @@ use Juliana\Cinema\Domain\Movie\MovieDetailed;
 
 /**
  * @var Home $home
- * @var MovieDetailed $movieDetailed
  */
 
 ?>
@@ -24,7 +23,7 @@ use Juliana\Cinema\Domain\Movie\MovieDetailed;
                     <div class="card-body">
                         <p class="card-rating">
                             <i class="fas fa-star"></i>
-                            <span class="rating">{{ $movieDetailed->rating }}</span>
+                            <span class="rating">{{ $movie->rating }}</span>
                         </p>
                         <h5 class="card-title">
                             <a href="">{{ $movie->name }}</a>

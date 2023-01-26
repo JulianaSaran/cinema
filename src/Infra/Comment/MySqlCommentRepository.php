@@ -30,8 +30,7 @@ class MySqlCommentRepository implements CommentRepository
 
         $comments = [];
 
-        foreach($result as $item)
-        {
+        foreach ($result as $item) {
             $comments[] = $this->commentFromItem($item);
         }
 
@@ -46,7 +45,7 @@ class MySqlCommentRepository implements CommentRepository
             writer: $this->repository->loadById($item["writer"]),
             comment: $item["comment"],
             rating: $item["rating"],
-            commentedAt: new DateTime($item["commented_at"]) ,
+            commentedAt: new DateTime($item["commented_at"]),
         );
     }
 
@@ -56,12 +55,12 @@ class MySqlCommentRepository implements CommentRepository
                     VALUES (:id, :movieId, :writer, :comment, :rating, :commentedAt)";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([
-            ":id"=> $comment->id,
-            ":movieId"=> $comment->getMovieId(),
-            ":writer"=> $comment->writer->id,
-            ":comment"=> $comment->comment,
-            ":rating"=> $comment->rating,
-            ":commentedAt"=> $comment->commentedAt->format(DateTimeInterface::ATOM),
+            ":id" => $comment->id,
+            ":movieId" => $comment->getMovieId(),
+            ":writer" => $comment->writer->id,
+            ":comment" => $comment->comment,
+            ":rating" => $comment->rating,
+            ":commentedAt" => $comment->commentedAt->format(DateTimeInterface::ATOM),
         ]);
     }
 
@@ -78,19 +77,19 @@ class MySqlCommentRepository implements CommentRepository
 
     public function delete(Comment $comment): void
     {
-     $query = "DELETE FROM comments WHERE id = :id";
-     $stmt = $this->pdo->prepare($query);
-     $stmt->execute(["id"=>$comment->id]);
+        $query = "DELETE FROM comments WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(["id" => $comment->id]);
     }
 
-    public function getRating(Movie $movie): float
+    public function getRating(int $movieId): float
     {
         $query = "SELECT avg(rating) as rating FROM comments WHERE movie_id = :movieId";
         $stmt = $this->pdo->prepare($query);
-        $stmt->execute([":movieId" => $movie->id]);
+        $stmt->execute([":movieId" => $movieId]);
         $result = $stmt->fetch();
 
-        return $result["rating"];
+        return $result["rating"] ?? 0;
 
     }
 }
