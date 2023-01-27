@@ -20,6 +20,8 @@ $flash = FlashMessage::fromSession();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
 </head>
 <body>
@@ -35,7 +37,7 @@ $flash = FlashMessage::fromSession();
         </button>
         <form action="/search" method="GET" id="search-form" class="form-inline my-2 my-lg-0">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Buscar filmes">
+                <input type="text" name="name" class="form-control" placeholder="Buscar filmes">
                 <button class="btn btn-light" type="submit" id="button-addon2">
                     <i class="fas fa-search"></i>
                 </button>

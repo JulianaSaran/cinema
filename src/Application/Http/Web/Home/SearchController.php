@@ -27,7 +27,5 @@ class SearchController
         }
 
         Response::redirect("search");
-
-
     }
 }

@@ -35,6 +35,7 @@ return function (Router $router, ContainerInterface $container): void {
 
     $router->get('/logout', $container->get(Web\Auth\LogoutPageController::class));
     $router->post('/users', $container->get(Web\Auth\CreateUserController::class));
-    $router->get('/search', $container->get(Web\Home\SearchController::class));
+    $router->post('/search', $container->get(Web\Home\SearchController::class));
+    $router->get('/search', $container->get(Web\Home\SearchPageController::class));
 };
 

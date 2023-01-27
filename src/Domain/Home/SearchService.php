@@ -9,9 +9,9 @@ class SearchService
     private MovieRepository $movieRepository;
 
     public function __construct(MovieRepository $movieRepository)
-{
-    $this->movieRepository = $movieRepository;
-}
+    {
+        $this->movieRepository = $movieRepository;
+    }
 
     public function findMovie($name)
     {

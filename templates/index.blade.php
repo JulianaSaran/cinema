@@ -13,10 +13,9 @@ use Juliana\Cinema\Domain\Movie\MovieDetailed;
 <div id="main-container" class="container-fluid">
     <h2 class="section-title">Filmes</h2>
     <p class="section-description">Veja as críticas:</p>
-    <div class="movie-container"></div>
     <div class="row">
         @foreach($home->movies as $movie)
-            <div class="col-3">
+            <div class="col-2">
                 <div class="card movie-card">
                     <div class="card-img-top"
                          style="background-image: url('img/movies/{{$movie->getImageMovie()}}')"></div>

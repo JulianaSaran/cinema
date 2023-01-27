@@ -18,12 +18,12 @@ class SearchPageController
     $this->service = $service;
 }
 
-    public function __invoke(string $name)
+    public function __invoke()
     {
+        $name = $_GET['name'] ?? '';
         $movies = $this->service->findMovie($name);
-        $content = $this->template->process("search", ['movies' => $movies ]);
+        $content = $this->template->process("search", ['movies' => $movies]);
 
         Response::html(200, $content)->render();
     }
-
 }
