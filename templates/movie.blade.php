@@ -45,63 +45,84 @@ use Juliana\Cinema\Domain\User\User;
                         <i class="fas fa-star star-light mr-1 main_star"></i>
                         <i class="fas fa-star star-light mr-1 main_star"></i>
                     </div>
-            </div>
+                </div>
 
-            <div class="review-container" id="review-form-container">
-                <h4>Envie seu comentário</h4>
-                <div class="page-description">
-                    @if($user !== null)
-                        <form action="/movies/{{ $movie->id }}/comments" id="review-form" method="POST">
-                            <label for="review">Seu comentário:</label>
-                            <div>
-                            <textarea name="comment" id="comment" rows="3" class="form-control"
+                <div class="review-container" id="review-form-container">
+                    <h4>Envie seu comentário</h4>
+                    <div class="page-description">
+
+
+                        @if($user !== null)
+                            <form id="review-form">
+                                <label for="review">Seu comentário:</label>
+                                <div>
+                                    <textarea name="comment" id="comment" rows="3" class="form-control"
                                       placeholder="O que você achou do filme"></textarea>
+                                </div>
+                                <div>
+                                    <select name="rating" id="rating" class="form-select" required>
+                                        <option value="">Selecione</option>
+                                        <option value="5">5</option>
+                                        <option value="4">4</option>
+                                        <option value="3">3</option>
+                                        <option value="2">2</option>
+                                        <option value="1">1</option>
+                                    </select>
+                                </div>
+                                <input type="button" id="comment-btn" class="btn card-btn btn-auto-width"
+                                       value="Envie seu comentário">
+                            </form>
+                        @else
+                            <div class="cadastrar">
+                                <a href="/auth" class="btn card-btn btn-auto-width">Entrar / Cadastrar</a>
                             </div>
-                            <div>
-                                <select name="rating" id="rating" class="form-select" required>
-                                    <option value="">Selecione</option>
-                                    <option value="5">5</option>
-                                    <option value="4">4</option>
-                                    <option value="3">3</option>
-                                    <option value="2">2</option>
-                                    <option value="1">1</option>
-                                </select>
-                            </div>
-                            <input type="submit" class="btn card-btn btn-auto-width" value="Envie seu comentário">
-                        </form>
-                    @else
-                        <div class="cadastrar">
-                            <a href="/auth" class="btn card-btn btn-auto-width">Entrar / Cadastrar</a>
-                        </div>
-                    @endif
+                        @endif
 
-                    <div class="col-md-12 review">
-                        <div class="card mb-3" style="background: #333">
-                            @foreach($movie->comments as $comment)
-                                <div class="row g-0">
-                                    <div class="col-md-3">
-                                        <img src="img/users/{{ $comment->writer->image }}" alt=""
-                                             style="max-width: 100%; border-radius: 100%">
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $comment->writer->name }}</h5>
-                                            <p><i class="fas fa-star"></i>{{ $comment->rating }}</p>
-                                            <p class="card-text">
-                                                {{ $comment->comment }}
-                                            </p>
-                                            <p class="card-text"><small class="text-muted">Last updated 3 mins
-                                                    ago</small>
-                                            </p>
+                        <div class="col-md-12 review">
+                            <div class="card mb-3" style="background: #333">
+                                @foreach($movie->comments as $comment)
+                                    <div class="row g-0">
+                                        <div class="col-md-3">
+                                            <img src="img/users/{{ $comment->writer->image }}" alt=""
+                                                 style="max-width: 100%; border-radius: 100%">
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $comment->writer->name }}</h5>
+                                                <p><i class="fas fa-star"></i>{{ $comment->rating }}</p>
+                                                <p class="card-text">
+                                                    {{ $comment->comment }}
+                                                </p>
+                                                <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                                        ago</small>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <script>
+            $("#comment-btn").on("click", function () {
+                console.log("lll")
+
+                const form = new FormData();
+                form.append("comment", $("#comment").val());
+                form.append("rating", $("#rating").val());
+
+                axios.post('/movies/{{ $movie->id }}/comments', form)
+                    .then(response => {
+                        document.location.href='/movies/{{ $movie->id }}';
+                    })
+            });
+
+            // action="/movies/{{ $movie->id }}/comments"  method="POST"
+
+        </script>
 
 @include('footer')
